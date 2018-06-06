@@ -1,0 +1,87 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: UOIT Room Finder API
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /classes:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: classes
+    get:
+      description: Returns empty classrooms for the given date and time
+      # used as the method name of the controller
+      operationId: classes
+      parameters:
+        - name: date
+          in: query
+          description: The date you want to find empty classrooms in (YYYY-MM-DD) format
+          required: true
+          type: string
+        - name: start_time
+          in: query
+          description: Start of the time range in which you are searching for empty classrooms
+          required: false 
+          type: string
+        - name: end_time
+          in: query
+          description: End of the time range in which you are searching for empty classrooms
+          required: false 
+          type: string
+        - name: building
+          in: query
+          description: Filter empty classrooms by building
+          required: false 
+          type: string
+      responses:
+        "200":
+          description: An array of Class objects
+          schema:
+            $ref: "#/definitions/ClassArray"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+
+definitions:
+  # complex objects have schema definitions
+  Class:
+    type: object
+    properties:
+      room:
+        type: string
+        example: UA1350
+      building: 
+        type: string
+        example: Science Building (UA)
+  ClassArray:
+    type: object
+    properties:
+      elements:
+        type: array
+        minLength: 0
+        items:
+          $ref: "#/definitions/Class"
+    required:
+        - elements         
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string

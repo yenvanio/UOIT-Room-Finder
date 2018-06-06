@@ -1,0 +1,74 @@
+@import "../../styles.scss";
+
+$header-color: #fff;
+
+.mat-toolbar {
+  padding-left: 0;
+}
+
+.mat-toolbar > div {
+  height: 100%;
+}
+
+.fix-to-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 256;
+}
+
+.under-header {
+  position: relative;
+  top: 128px;
+  z-index: 1;
+}
+
+.toolbar {
+  background-color: $header-color;
+  color: $text-color;
+}
+
+.ribbon {
+  position: relative;
+  z-index: -1;
+}
+
+.toolbar > div:first-child {
+  width: 12vw;
+}
+
+.logo-parent {
+  outline: none;
+  padding-right: 1em;
+  cursor: pointer;
+  color: $text-color;
+}
+
+.logo-parent > img, .logo-parent > span {
+  cursor: pointer;
+  outline: none;
+}
+
+.logo {
+  margin-left: 1em;
+  height: 2em;
+  outline: none;
+}
+
+.logo-text {
+  font-family: Prism, Verdana, sans-serif;
+  font-size: 1.5em;
+  margin-left: 0.5em;
+}
+
+.header-text {
+  font-family: Verdana, sans-serif;
+  font-size: 0.7em;
+}
+
+.router {
+  max-width: 1366px;
+  margin: auto;
+}
+
