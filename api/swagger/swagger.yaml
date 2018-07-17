@@ -87,6 +87,28 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /roomSchedule:
+      # binds a127 app logic to a route 
+      x-swagger-router-controller: classes
+      get: 
+        description: Returns the next classes occuring in a specified room after a certain time
+        # used as the method name of the controller 
+        operationId: getRoomSchedule
+        parameters:
+          - name: room
+            in: query 
+            description: The room you want to see future classes for 
+            required: true 
+            type: string
+        responses:
+          "200":
+            description: An array of Class objects
+            schema:
+              $ref: "#/definitions/Class"
+          default:
+            description: Error
+            schema:
+              $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 

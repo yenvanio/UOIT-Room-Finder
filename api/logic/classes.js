@@ -1,7 +1,7 @@
 var db = require('../../config/db');
 
   // Connect to mysql database
-  db.initialize(function(err) {
+  db.initialize(function (err) {
     if (err) {
       throw err;
     }
@@ -13,7 +13,7 @@ var db = require('../../config/db');
     * day, date, start_time, end_time, building 
   * @param {Callback} callback 
   */
-  getClassesByParam = function(data, callback) {
+  getClassesByParam = function (data, callback) {
       var sql = `
       SELECT class.room, building.name, course.type, building.location
       FROM class 
@@ -64,5 +64,33 @@ var db = require('../../config/db');
     });
   }
 
+  /**
+  * Get Weekly schedule for a room
+  * @param {JSON Object} data 
+    * room
+  * @param {Callback} callback 
+  */
+  getRoomSchedule = function (data, callback) {
+    var sql = `
+    SELECT * FROM class
+            WHERE class.room = '${data.room}'
+            ORDER BY CASE WHEN day = 'M' THEN '1'
+			                    WHEN day = 'T' THEN '2'
+			                    WHEN day = 'W' THEN '3'
+			                    WHEN day = 'R' THEN '4'
+			                    WHEN day = 'F' THEN '5'
+                          ELSE day END ASC, class.start_time`;   
+    console.log(sql);
+
+    db.query(sql, function(err, res) {
+      if (err) {
+        callback(err, null);
+      } 
+      else {
+        callback(null, res);
+      }
+    });                        
+  }
+
 // Add functions for classes module to export
-module.exports = {getClassesByParam, getFutureClasses};
+module.exports = {getClassesByParam, getFutureClasses, getRoomSchedule};
