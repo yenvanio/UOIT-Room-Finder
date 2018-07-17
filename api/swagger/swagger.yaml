@@ -24,7 +24,7 @@ paths:
     get:
       description: Returns empty classrooms for the given date and time
       # used as the method name of the controller
-      operationId: classes
+      operationId: getClassesByParam
       parameters:
         - name: date
           in: query
@@ -33,12 +33,12 @@ paths:
           type: string
         - name: start_time
           in: query
-          description: Start of the time range in which you are searching for empty classrooms
+          description: Start of the time range in which you are searching for empty classrooms in (HH:mm:ss) format
           required: false 
           type: string
         - name: end_time
           in: query
-          description: End of the time range in which you are searching for empty classrooms
+          description: End of the time range in which you are searching for empty classrooms in (HH:mm:ss) format
           required: false 
           type: string
         - name: building
@@ -50,7 +50,39 @@ paths:
         "200":
           description: An array of Class objects
           schema:
-            $ref: "#/definitions/ClassArray"
+            $ref: "#/definitions/Class"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /futureClasses:
+    # binds a127 app logic to a route 
+    x-swagger-router-controller: classes
+    get: 
+      description: Returns the next classes occuring in a specified room after a certain time
+      # used as the method name of the controller 
+      operationId: getFutureClasses
+      parameters:
+        - name: room
+          in: query 
+          description: The room you want to see future classes for 
+          required: true 
+          type: string
+        - name: date
+          in: query
+          description: The date you want to see the classes for 
+          required: true
+          type: string
+        - name: start_time
+          in: query
+          description: The start of the time range in which you are searching for future classes
+          required: false
+          type: string
+      responses:
+        "200":
+          description: An array of Class objects
+          schema:
+            $ref: "#/definitions/Class"
         default:
           description: Error
           schema:
@@ -69,16 +101,6 @@ definitions:
       building: 
         type: string
         example: Science Building (UA)
-  ClassArray:
-    type: object
-    properties:
-      elements:
-        type: array
-        minLength: 0
-        items:
-          $ref: "#/definitions/Class"
-    required:
-        - elements         
   ErrorResponse:
     required:
       - message

@@ -6,9 +6,9 @@ var db = require('mysql');
 
 /**
  * Initialize SQL Database Connection
- * @param {Callback} cb 
+ * @param {Callback} callback 
  */
-mysql.initialize = function(cb) {
+mysql.initialize = function(callback) {
     var con = db.createConnection({
         host: config.database.host,
         user: config.database.user,
@@ -18,9 +18,24 @@ mysql.initialize = function(cb) {
       
       con.connect(function(err) {
         if (err) {
-          return cb(err);
+          return callback(err);
         }
         mysql.con = con;
-        cb();
+        callback();
       });
-  };
+};
+
+/**
+ * Executes SQL Query
+ * @param {String} query 
+ * @param {Callback} callback 
+ */
+mysql.query = function (query, callback) {
+  mysql.con.query(query, function(err, res) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, res);
+    }
+  });
+}

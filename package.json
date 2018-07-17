@@ -9,6 +9,7 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.12.3",
+    "mysql": "^2.15.0",
     "swagger-express-mw": "^0.1.0"
   },
   "devDependencies": {
@@ -17,6 +18,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "swagger project test"
+    "test": "swagger project test",
+    "edit": "swagger project edit"
   }
 }

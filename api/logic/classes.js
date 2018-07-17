@@ -1,48 +1,68 @@
-var db = require('../../config/db')();
+var db = require('../../config/db');
 
-// Connect to mysql database
-db.initialize(function(err) {
-  if (err) {
-    throw err;
+  // Connect to mysql database
+  db.initialize(function(err) {
+    if (err) {
+      throw err;
+    }
+  });
+
+ /**
+  * Get Classes based on parameters
+  * @param {JSON Object} data 
+    * day, date, start_time, end_time, building 
+  * @param {Callback} callback 
+  */
+  getClassesByParam = function(data, callback) {
+      var sql = `
+      SELECT class.room, building.name, course.type, building.location
+      FROM class 
+      LEFT JOIN course ON class.fk_course_crn = course.crn
+      LEFT JOIN building ON class.fk_building_id = building.id
+      WHERE class.day = '${data.day}' 
+      AND '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date
+      AND class.room NOT IN (
+          SELECT class.room FROM class
+          WHERE '${data.start_time}' >= class.start_time AND '${data.end_time}' <= class.end_time
+      ) GROUP BY class.room, building.name, course.type, building.location`;
+
+      console.log(sql);
+
+      db.query(sql, function(err, res) {
+        if (err) {
+          callback(err, null);
+        } 
+        else {
+          callback(null, res);
+        }
+      });
   }
-});
 
-module.exports = {
-    /**
-    * Get Classes based on date, start/end time, building
-    * @param {JSON Object} data 
-    */
-  getClasses = function(data) {
-    var sql = 
-    `SELECT * FROM (
-      (SELECT course.title, class.start_time, class.end_time, class.room, building.name, course.type, COUNT(*) AS count From class 
-       LEFT JOIN course ON class.fk_course_crn = course.crn 
-       LEFT JOIN building ON class.fk_building_id = building.id
-       WHERE class.day = ${data.day}
-       AND ${data.start_date} >= class.start_date
-       AND ${data.end_date} <= class.end_date
-       AND class.fk_building_id LIKE '%${data.building}%'
-       GROUP BY class.room) AS T1,
-               
-      (SELECT course.title, class.start_time, class.end_time, class.room, building.name, course.type, COUNT(*) AS count From class 
-       LEFT JOIN course ON class.fk_course_crn = course.crn 
-       LEFT JOIN building ON class.fk_building_id = building.id
-       WHERE (${data.start_time} < class.start_time AND ${data.start_time} < class.start_time
-       OR ${data.end_time} > class.end_time AND ${data.end_time} > class.end_time)
-       AND class.day = ${data.day}
-       AND ${data.start_date} >= class.start_date
-       AND ${data.end_date} <= class.end_date
-       AND class.fk_building_id LIKE '%${data.building}%'
-       GROUP BY class.room) AS T2           
-       )   
-    WHERE T1.count=T2.count AND T1.room = T2.room`;
+  /**
+  * Get Future Classes given a Class 
+  * @param {JSON Object} data 
+    * day, date, start_time, room
+  * @param {Callback} callback 
+  */
+  getFutureClasses = function (data, callback) {
+    var sql = `
+    SELECT * FROM class 
+    WHERE class.day = '${data.day}'
+    AND class.room = '${data.room}'
+    AND '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date
+    AND '${data.start_time}' <= class.start_time`;
+  
+    console.log(sql);
 
-    mysql.con.query(sql, function(err, results) {
+    db.query(sql, function(err, res) {
       if (err) {
-        console.error(err);
-        res.statusCode = 500;
-        return res.json({ errors: ['Could not retrieve classes'] });
+        callback(err, null);
+      } 
+      else {
+        callback(null, res);
       }
     });
   }
-};
+
+// Add functions for classes module to export
+module.exports = {getClassesByParam, getFutureClasses};
