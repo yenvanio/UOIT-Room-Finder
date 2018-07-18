@@ -15,16 +15,15 @@ var db = require('../../config/db');
   */
   getClassesByParam = function (data, callback) {
       var sql = `
-      SELECT class.room, building.name, course.type, building.location
-      FROM class 
-      LEFT JOIN course ON class.fk_course_crn = course.crn
-      LEFT JOIN building ON class.fk_building_id = building.id
-      WHERE class.day = '${data.day}' 
-      AND '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date
-      AND class.room NOT IN (
-          SELECT class.room FROM class
-          WHERE '${data.start_time}' >= class.start_time AND '${data.end_time}' <= class.end_time
-      ) GROUP BY class.room, building.name, course.type, building.location`;
+      SELECT class.room, building.name AS building, course.type, building.location FROM class 
+          LEFT JOIN course ON class.fk_course_crn = course.crn
+          LEFT JOIN building ON class.fk_building_id = building.id
+                WHERE class.day = '${data.day}' 
+                AND '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date
+                AND class.room NOT IN (
+                    SELECT class.room FROM class
+                    WHERE '${data.start_time}' >= class.start_time AND '${data.end_time}' <= class.end_time
+                ) GROUP BY class.room, building.name, course.type, building.location`;
 
       console.log(sql);
 
@@ -47,10 +46,10 @@ var db = require('../../config/db');
   getFutureClasses = function (data, callback) {
     var sql = `
     SELECT * FROM class 
-    WHERE class.day = '${data.day}'
-    AND class.room = '${data.room}'
-    AND '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date
-    AND '${data.start_time}' <= class.start_time`;
+              WHERE class.day = '${data.day}'
+              AND class.room = '${data.room}'
+              AND '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date
+              AND '${data.start_time}' <= class.start_time`;
   
     console.log(sql);
 

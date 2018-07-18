@@ -89,7 +89,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
   /roomSchedule:
       # binds a127 app logic to a route 
-      x-swagger-router-controller: classes
+      x-swagger-router-controller: rooms
       get: 
         description: Returns the next classes occuring in a specified room after a certain time
         # used as the method name of the controller 
