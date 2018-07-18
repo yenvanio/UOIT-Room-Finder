@@ -1,0 +1,26 @@
+html {
+    width: 100%; 
+    height: 100%; 
+}
+
+body {
+    width: 100%; 
+    height: 100%; 
+}
+
+.wrapperHeader {
+    width:100%;
+    height: 200px; /* height of the background image? */
+    text-align:center;
+    background: black;
+}
+   
+.wrapperHeader .header {
+    width:100%;
+    height:200px;
+}
+   
+.wrapperHeader .header img {
+    width: 100%; 
+    height: 100%; 
+}
