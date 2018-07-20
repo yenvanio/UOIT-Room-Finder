@@ -1,0 +1,89 @@
+.container > mat-card {
+    align-content: center;
+}
+
+.tableCard {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.refreshCard {
+    background: white;
+    width: 100%;
+}
+
+.refreshIcon {
+    float: right;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 2em;
+    padding: none;
+    color: #1870af;
+    text-shadow:  -1px 2px #d8d6d6;
+}
+
+.header-blue > td {
+  border-bottom: 2px solid #0077ca;
+  color: #0077ca;
+}
+
+.row-blue:hover {
+  background-color: #1d88d3 !important;
+}
+
+.row-click-blue {
+  background-color: #1d88d3 !important;
+}
+
+.mat-row:hover {
+  background-color: #FAFAFA;
+}
+
+.mat-card {
+  padding: 0;
+  /* height: $layout-height; */
+  overflow: auto;
+}
+
+.mat-table {
+  width: 100%;
+  background: white;
+  table-layout: fixed;
+}
+
+tr.mat-row {
+  cursor: pointer;
+  /* height: $row-height; */
+}
+
+tr.mat-header-row {
+  /* height: $row-height; */
+}
+
+td {
+  font-size: 16px;
+  font-family: Verdana, sans-serif;
+  color: black;
+  padding: 0 2px;
+}
+
+.mat-header-row > td {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  font-size: 16px;
+}
+
+.mat-header-row > td:first-of-type, .mat-row > td:first-of-type {
+  padding-left: 12px;
+}
+
+.mat-header-row > td:last-of-type, .mat-row > td:last-of-type {
+  padding-right: 12px;
+}
+
+::ng-deep .mat-sort-header-container {
+  justify-content: inherit !important;
+}
