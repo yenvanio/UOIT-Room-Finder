@@ -12,7 +12,7 @@ export class ErrorComponent implements OnInit, OnDestroy {
   private _alive = true;
 
   errorCode: Number | String = '404';
-  errorTitle: String = 'errors.404';
+  errorTitle: String = 'Not Found';
   errorMessage: String = 'Page does not exist';
 
   constructor(private _route: ActivatedRoute) { }
