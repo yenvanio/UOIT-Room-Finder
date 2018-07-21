@@ -5,6 +5,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeResolver } from './resolvers/home.resolver';
 import { SearchTimeComponent } from './pages/search-time/search-time.component';
+import { SearchRoomComponent } from './pages/search-room/search-room.component';
+import { HelpComponent } from './pages/help/help.component';
 
 const appRoutes: Routes = [
   {
@@ -22,6 +24,14 @@ const appRoutes: Routes = [
   {
     path: 'app/search/time',
     component: SearchTimeComponent,
+  },
+  {
+    path: 'app/search/room',
+    component: SearchRoomComponent,
+  },
+  {
+    path: 'app/help',
+    component: HelpComponent,
   },
   {
     path: 'error',

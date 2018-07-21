@@ -1,8 +1,8 @@
 <div class="container">
-    <mat-card class="tableCard">
+    <mat-card class="tableCard" [style.height]="getHeight(data.offsetHeight)">
       
       <div *ngIf="data.refresh">
-        <i class="material-icons refreshIcon" (click)="refreshClick()">refresh</i>
+        <i class="material-icons refreshIcon" (click)="refreshClick()" matTooltip="Refresh">refresh</i>
       </div>
 
       <table mat-table #table [dataSource]="dataSource" matSort>
@@ -12,7 +12,7 @@
             <div *ngSwitchCase="true">
               <td mat-header-cell *matHeaderCellDef [style.justify-content]="getHeaderAlignment(header)" 
               [style.width]="getWidth(header)"mat-sort-header>
-                {{header.name}}
+                {{ header.name }}
               </td>
             </div>
             <div *ngSwitchDefault>
@@ -30,7 +30,7 @@
               <span *ngSwitchCase="'none'" [title]="getTitle(item, header.key)"
                     [style.width]="getWidthWithPadding(item, header)" [style.color]="getColor(item, header)"
                     [style.padding-left]="getPadding(item, header)" [style.font-weight]="getFontWeight(item, header)">
-                    {{item[header.key]}}
+                    {{ item[header.key] }}
               </span>
 
               <i *ngSwitchCase="'icon'" class="{{header.icon.class}} yellowTint md-24">{{ header.icon.icon }}</i>

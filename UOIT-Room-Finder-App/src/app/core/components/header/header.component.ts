@@ -25,22 +25,16 @@ export class HeaderComponent implements OnInit {
         key: 'home'
       },
       {
-        title: 'Time',
+        title: 'Search by Time',
         class: 'material-icons',
         icon: 'access_time',
         key: 'time'
       },
       {
-        title: 'Room',
+        title: 'Search by Room',
         class: 'material-icons',
         icon: 'meeting_room',
         key: 'room'
-      },
-      {
-        title: 'Building',
-        class: 'material-icons',
-        icon: 'location_city',
-        key: 'building'
       },
       {
         title: 'Help',

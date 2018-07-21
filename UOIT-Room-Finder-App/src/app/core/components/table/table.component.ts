@@ -61,6 +61,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
    */
   dataSource: MatTableDataSource<any>;
 
+  height = 600;
+
   /**
    * Used to map text-align values to justify-content values
    * @type {{left: string; center: string; right: string}}
@@ -268,9 +270,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   markOnClick(item: Data): string {
     return item.clicked && this.data.selectOnClick ? 'row-click-' + this.data.theme : '';
   }
-
   /** Returns custom table height. */
-  get height() { return this.data.height ? this.data.height + 'px' : ''; }
+  getHeight() { return this.data.offsetHeight ? (this.height - this.data.offsetHeight) + 'px' : this.height + 'px'; }
 
 }
 

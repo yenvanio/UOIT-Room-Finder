@@ -7,17 +7,25 @@
     grid-row-gap: 10px;
   }
   
-  .header-container mat-form-field {
-    width: 75%;
+.header-container mat-form-field {
+    width: 100%;
     font-size: 14px;
     text-align: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
-  .search {
+.search {
+    grid-row-start: 2;
     width: 100%;
     color: white;
     background-color: #1870af;
     grid-column-start: 2;
     grid-column-end: 3;
+  }
+
+.table-container {
+    display: grid;
+    width: 75%;
+    margin: auto;
+    overflow-y: hidden;
   }

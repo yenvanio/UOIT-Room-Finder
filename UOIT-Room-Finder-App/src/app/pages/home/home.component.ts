@@ -52,7 +52,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       },
     ],
     data: [],
-    refresh: true
+    refresh: true,
+    offsetHeight: 0
   };
 
   /**

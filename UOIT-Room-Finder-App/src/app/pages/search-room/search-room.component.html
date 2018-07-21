@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="spacerDiv"></div>
+
+<div class="header-container" [formGroup]="form">
+
+  <div></div>
+  <div class="room">
+      <mat-form-field>
+          <input matInput formControlName="room" [placeholder]="Room" type="text">
+          <span matPrefix class="blueTint">Room:&nbsp;</span>
+          <mat-error>{{getError('room')}}</mat-error>
+      </mat-form-field>
+  </div>
+  <div></div>
+  <div></div>
+  <div>
+    <button mat-raised-button class="search" (click)="search()" [disabled]="cantSearch">Search</button>
+  </div>
+
+</div>
+
+<mat-card class="table-container">
+
+  <app-table [data]="MtableRequest"></app-table>
+  <div class="miniSpacerDiv"></div>
+  <app-table [data]="TtableRequest"></app-table>
+  <div class="miniSpacerDiv"></div>
+  <div class="miniSpacerDiv"></div>
+  <app-table [data]="WtableRequest"></app-table>
+  <div class="miniSpacerDiv"></div>
+  <div class="miniSpacerDiv"></div>
+  <app-table [data]="RtableRequest"></app-table>
+  <div class="miniSpacerDiv"></div>
+  <div class="miniSpacerDiv"></div>
+  <app-table [data]="FtableRequest"></app-table>
+  <div class="miniSpacerDiv"></div>
+
+
+</mat-card>
+
+

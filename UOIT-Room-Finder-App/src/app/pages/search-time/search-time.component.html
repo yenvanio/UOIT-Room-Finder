@@ -1,3 +1,39 @@
 <app-header></app-header>
 <div class="spacerDiv"></div>
+
+<div class="header-container" [formGroup]="form">
+
+  <div class="date">
+    <mat-form-field>
+        <input matInput formControlName="date" [placeholder]="Date" type="text"
+              (focus)="dateDP.open()" [matDatepicker]="dateDP">
+        <span matPrefix class="blueTint">Date:&nbsp;</span>
+        <mat-error>{{getError('date')}}</mat-error>
+    </mat-form-field>
+    <mat-datepicker #dateDP></mat-datepicker>
+  </div>
+
+  <div class="start_time">
+    <mat-form-field>
+        <input matInput formControlName="start_time" [placeholder]="Start" type="text">
+        <span matPrefix class="blueTint">Start Time:&nbsp;</span>
+        <mat-error>{{getError('start_time')}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="end_time">
+      <mat-form-field>
+          <input matInput formControlName="end_time" [placeholder]="End" type="text">
+          <span matPrefix class="blueTint">End Time:&nbsp;</span>
+          <mat-error>{{getError('end_time')}}</mat-error>
+      </mat-form-field>
+    </div>
+
+  <div></div>
+
+  <div>
+    <button mat-raised-button class="search" (click)="search()" [disabled]="cantSearch">Search</button>
+  </div>
+</div>
+
 <app-table [data]="tableRequest" (rowEmitter)="goToDetails($event)" (refreshEmitter)="refreshTable()"></app-table>

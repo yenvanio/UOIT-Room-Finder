@@ -19,6 +19,8 @@ export interface TableRequest {
   data: Data[];
   /** Show refresh button or not */
   refresh: boolean;
+  /** Alter the height based on page */
+  offsetHeight: number;
 }
 
 /**

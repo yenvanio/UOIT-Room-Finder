@@ -11,11 +11,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { CustomValidators } from '../../core/validators';
 
 @Component({
-  selector: 'app-search-time',
-  templateUrl: './search-time.component.html',
-  styleUrls: ['./search-time.component.css']
+  selector: 'app-search-room',
+  templateUrl: './search-room.component.html',
+  styleUrls: ['./search-room.component.css']
 })
-export class SearchTimeComponent implements OnInit, OnDestroy {
+export class SearchRoomComponent implements OnInit, OnDestroy {
     /**
    * Classes
    * @type {Class[]}
@@ -39,23 +39,55 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
   /**
    * Data to be sent to the table
    */
-  tableRequest: TableRequest = {
+  MtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
-      {name: 'Room', key: 'room', width: 200, align: 'center'},
-      {name: 'Building', key: 'building', width: 300, align: 'center'},
-      {name: '', key: 'isLab', width: 150, align: 'center',
-        icon: {
-          title: 'Lab Room: Might be Locked!',
-          class: 'material-icons',
-          icon: 'warning',
-          key: 'warning'
-        }
-      },
+      {name: 'Monday', key: 'M', width: 200, align: 'center'},
+      {name: 'Type', key: 'type', width: 300, align: 'center'}
     ],
     data: [],
     refresh: false,
-    offsetHeight: 50
+    offsetHeight: 250,
+  };
+  TtableRequest: TableRequest = {
+    theme: 'blue',
+    headers: [
+      {name: 'Tuesday', key: 'T', width: 200, align: 'center'},
+      {name: 'Type', key: 'type', width: 300, align: 'center'}
+    ],
+    data: [],
+    refresh: false,
+    offsetHeight: 250
+  };
+  WtableRequest: TableRequest = {
+    theme: 'blue',
+    headers: [
+      {name: 'Wednesday', key: 'W', width: 200, align: 'center'},
+      {name: 'Type', key: 'type', width: 300, align: 'center'}
+    ],
+    data: [],
+    refresh: false,
+    offsetHeight: 250
+  };
+  RtableRequest: TableRequest = {
+    theme: 'blue',
+    headers: [
+      {name: 'Thursday', key: 'R', width: 200, align: 'center'},
+      {name: 'Type', key: 'type', width: 300, align: 'center'}
+    ],
+    data: [],
+    refresh: false,
+    offsetHeight: 250
+  };
+  FtableRequest: TableRequest = {
+    theme: 'blue',
+    headers: [
+      {name: 'Friday', key: 'F', width: 200, align: 'center'},
+      {name: 'Type', key: 'type', width: 300, align: 'center'}
+    ],
+    data: [],
+    refresh: false,
+    offsetHeight: 250
   };
 
   /**
@@ -64,9 +96,7 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    */
   form: FormGroup = new FormGroup({
     /*General*/
-    date: new FormControl(moment(), [CustomValidators.required]),
-    start_time: new FormControl(),
-    end_time: new FormControl(),
+    room: new FormControl('', [CustomValidators.required]),
   });
 
   /**
@@ -136,6 +166,4 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
   goBack() {
     this._router.navigate(['/app/home']);
   }
-
 }
-

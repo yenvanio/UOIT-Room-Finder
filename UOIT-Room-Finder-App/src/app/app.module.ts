@@ -10,8 +10,9 @@ import { ErrorComponent } from './pages/error/error.component';
 import { HomeResolver } from './resolvers/home.resolver';
 import { HomeService } from './services/home.service';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import { SearchRoomComponent } from './pages/search-room/search-room.component';
+import { HelpComponent } from './pages/help/help.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ErrorComponent,
     SearchTimeComponent,
+    SearchRoomComponent,
+    HelpComponent,
   ],
   providers: [
     HomeResolver,
@@ -29,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     BrowserModule,
     CoreModule,
+    MatMomentDateModule,
     HttpClientModule
   ],
   bootstrap: [AppComponent]
