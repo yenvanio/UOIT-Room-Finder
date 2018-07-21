@@ -9,7 +9,7 @@
 .searchContainer {
     display: grid;
     grid-template-rows: 0%;
-    grid-template-columns: 20% 20% 20%;
+    grid-template-columns: 20% 20% 20% 20%;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     justify-content: space-evenly;
@@ -17,7 +17,7 @@
 
 .searchDiv {
     height: 50px;
-    width: 75px;
+    width: 50px;
     grid-row-start: 1;
     grid-row-end: 1;
     text-align: center;
@@ -41,13 +41,3 @@
 .searchDiv:hover {
     background-color: #F5F9FD !important;
 }
-
-.blueTint {
-    color:#1870af;
-}
-
- /* Rules for sizing the icon. */
- .material-icons.md-18 { font-size: 18px; }
- .material-icons.md-24 { font-size: 24px; }
- .material-icons.md-36 { font-size: 36px; }
- .material-icons.md-48 { font-size: 48px; }

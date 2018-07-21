@@ -23,7 +23,7 @@ export class HomeResolver implements Resolve<Observable<Class[]>> {
    * @returns {any}
    */
   resolve(route: ActivatedRouteSnapshot) {
-    return this._hService.getByParam('2018-07-16', '', '', '');
+    return this._hService.getWithoutParam();
   }
 }
 // moment().format('YYYY-MM-DD')

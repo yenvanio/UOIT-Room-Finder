@@ -1,5 +1,6 @@
-import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderRequest } from '../../models/header-request';
+import { Router } from '@angular/router';
 
 /**
   * Header (Banner) at the top of the page indicating the current semester via an image
@@ -11,21 +12,50 @@ import { HeaderRequest } from '../../models/header-request';
 })
 export class HeaderComponent implements OnInit {
 
-  /**
-   * Emits data to parent component when buttons are clicked
-   * @type {EventEmitter<Data>}
+    /**
+   * Data to be sent to the page header
    */
-  @Output() timeEmitter: EventEmitter<any> = new EventEmitter<any>();
-  @Output() roomEmitter: EventEmitter<any> = new EventEmitter<any>();
-  @Output() buildingEmitter: EventEmitter<any> = new EventEmitter<any>();
-  @Output() helpEmitter: EventEmitter<any> = new EventEmitter<any>();
+  data: HeaderRequest = {
+    title: 'UOIT Room Finder',
+    searchTypes: [
+      {
+        title: 'Home',
+        class: 'material-icons',
+        icon: 'home',
+        key: 'home'
+      },
+      {
+        title: 'Time',
+        class: 'material-icons',
+        icon: 'access_time',
+        key: 'time'
+      },
+      {
+        title: 'Room',
+        class: 'material-icons',
+        icon: 'meeting_room',
+        key: 'room'
+      },
+      {
+        title: 'Building',
+        class: 'material-icons',
+        icon: 'location_city',
+        key: 'building'
+      },
+      {
+        title: 'Help',
+        class: 'material-icons',
+        icon: 'help_outline',
+        key: 'help'
+      }
+    ]
+  };
 
   /**
-   * Data passed to the Header Component
+   * Constructor
+   * @param {Router} _router
    */
-  @Input() data: HeaderRequest;
-
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() { }
 
@@ -34,15 +64,45 @@ export class HeaderComponent implements OnInit {
    * @param {String} type
    */
   private buttonClick(type) {
-    if (type === 'time') {
-      this.timeEmitter.emit();
+    console.log(type);
+    if (type === 'home') {
+      this.goToHome();
+    } else if (type === 'time') {
+      this.goToTime();
     } else if (type === 'room') {
-      this.roomEmitter.emit();
+      this.goToRoom();
     } else if (type === 'building') {
-      this.buildingEmitter.emit();
+      this.goToBuilding();
     } else if (type === 'help') {
-      this.helpEmitter.emit();
+      this.goToHelp();
     }
+  }
+  /**
+   * Functions for the event emitters from the page header component
+   */
+
+  goToHome() {
+    this._router.navigate(['/app/home']);
+  }
+
+  /** Search By Time */
+  goToTime() {
+    this._router.navigate(['/app/search/time']);
+  }
+
+  /** Search By Room */
+  goToRoom() {
+    this._router.navigate(['/app/search/room']);
+  }
+
+  /** Search By Building */
+  goToBuilding() {
+    this._router.navigate(['/app/search/building']);
+  }
+
+  /** Go to Help Page */
+  goToHelp() {
+    this._router.navigate(['/app/help']);
   }
 
 }

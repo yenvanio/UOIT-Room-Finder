@@ -16,7 +16,10 @@ export class HomeService {
   constructor(private _http: HttpClient) { }
 
   getByParam(date: String, start_time: String, end_time: String, building: String): Observable<Class[]> {
-    let apiURL = `${API_URL}/classes?date=${date}`;
+    let apiURL = `${API_URL}/classes`;
+    if (date) {
+      apiURL += `?date=${date}`;
+    }
     if (start_time) {
       apiURL += `&start_time=${start_time}`;
     }
@@ -28,6 +31,10 @@ export class HomeService {
     }
 
     return this._http.get<Class[]>(apiURL);
+  }
+
+  getWithoutParam(): Observable<Class[]> {
+    return this._http.get<Class[]>(`${API_URL}/classes`);
   }
 
 }

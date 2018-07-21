@@ -10,6 +10,12 @@ import {MatSort, MatTableDataSource} from '@angular/material';
 export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
   /**
+   * Emits data to parent component when buttons are clicked
+   * @type {EventEmitter<Data>}
+   */
+  @Output() rowEmitter: EventEmitter<Data> = new EventEmitter<Data>();
+  @Output() refreshEmitter: EventEmitter<any> = new EventEmitter<any>();
+  /**
    * Default column width (Only used if width is not provided).
    * @type {number}
    */
@@ -36,12 +42,6 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
    * Used to clear coloring on table from parent component.
    */
   @Input() clearColor: number;
-
-  /**
-   * Emits data to parent component when a row is clicked.
-   * @type {EventEmitter<Data>}
-   */
-  @Output() rowClickEmitter: EventEmitter<Data> = new EventEmitter<Data>();
 
   /**
    * Emits data to parent component when a cell is clicked.
@@ -116,23 +116,14 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
    * @param {Data} row
    */
   rowClick(row: Data) {
-    this.data.data.forEach(r => r.clicked = false);
-    row.clicked = true;
-    this.rowClickEmitter.emit(row);
+    this.rowEmitter.emit(row);
   }
 
   /**
-   * Emits row data, cell key and table data to parent on cell click.
-   * @param {Data} row
-   * @param {string} key
+   * Emits to parent component so table can be refreshed
    */
-  cellClick(row: Data, key: string) {
-    const data = {
-      row: row,
-      key: key,
-      table: this.data.data
-    };
-    this.cellClickEmitter.emit(data);
+  refreshClick() {
+    this.refreshEmitter.emit();
   }
 
   /**

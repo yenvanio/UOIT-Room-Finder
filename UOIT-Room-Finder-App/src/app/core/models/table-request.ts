@@ -17,6 +17,8 @@ export interface TableRequest {
   headers: Header[];
   /** All the data inserted into the table. */
   data: Data[];
+  /** Show refresh button or not */
+  refresh: boolean;
 }
 
 /**
@@ -35,6 +37,8 @@ export interface Header {
   dataAlign?: Alignment;
   /** Optional. Used if the column contains images. */
   image?: ImageInfo;
+  /** Optional. Used if the column contains images. */
+  icon?: IconInfo;
   /** Optional. If sortable in TableRequest is set to false, this can be set to true to only sort this column. */
   sortable?: boolean;
 }
@@ -49,6 +53,20 @@ export interface ImageInfo {
   trueImageRef: string;
   /** Reference to the false image. */
   falseImageRef: string;
+}
+
+/**
+ * Object for the icon columns
+ */
+export interface IconInfo {
+  /** The tooltip */
+  title: String;
+  /** Material icon class */
+  class: String;
+  /** Material icon name */
+  icon: String;
+  /** Extra info */
+  key: any;
 }
 
 /**

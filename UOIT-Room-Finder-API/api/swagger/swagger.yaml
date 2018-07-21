@@ -29,7 +29,7 @@ paths:
         - name: date
           in: query
           description: The date you want to find empty classrooms in (YYYY-MM-DD) format
-          required: true
+          required: false
           type: string
         - name: start_time
           in: query

@@ -9,12 +9,12 @@ import { Location } from '@angular/common';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-search-time',
+  templateUrl: './search-time.component.html',
+  styleUrls: ['./search-time.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  /**
+export class SearchTimeComponent implements OnInit, OnDestroy {
+    /**
    * Classes
    * @type {Class[]}
    */
@@ -68,30 +68,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     private _cService: CoreService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _location: Location) {
-    // Checking to see if resolver delivered data correctly
-    const routeData = this._route.snapshot.data;
-    if (!routeData.classes) {
-      this._cService.error('500', 'Classes could not be retrieved');
-    }
-  }
+    private _location: Location) { }
 
   ngOnInit() {
-    const routeData = this._route.snapshot.data;
-    console.log(routeData);
-
-    /* Classes */
-    routeData.classes.classes.forEach(c => {
-      if (c.type === 'Laboratory') {
-        c.isLab = true;
-      }
-      this._classes.push(c);
-    });
-    this.tableRequest.data = this._classes;
-    this.update++;
-
     this._locationSubscription = this._location.subscribe(e => this.goBack());
-    this._buildPage(routeData);
   }
 
   /**
@@ -135,3 +115,4 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 }
+

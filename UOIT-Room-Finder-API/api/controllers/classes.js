@@ -119,7 +119,10 @@ function getRoomSchedule(req, res) {
  * @param {Number} num 
  */
 function convertToDay(num) {
+  console.log(num);
   switch(num) {
+    case 0: 
+      return 'S'
     case 1:
       return 'M'
     case 2: 
@@ -130,6 +133,8 @@ function convertToDay(num) {
       return 'R'
     case 5:
       return 'F'
+    case 6:
+      return 'S'
   }
 }
 
