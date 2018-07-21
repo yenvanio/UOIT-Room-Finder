@@ -23,13 +23,13 @@ import {
   MatSortModule,
   MatTableModule,
   MatTabsModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSpinner,
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/header/header.component';
 import { TableComponent } from './components/table/table.component';
-import { SearchComponent } from './components/search/search.component';
 import { CoreService } from './services/core.service';
 
 
@@ -65,12 +65,12 @@ import { CoreService } from './services/core.service';
   declarations: [
     HeaderComponent,
     TableComponent,
-    SearchComponent
+    MatSpinner
   ],
   exports: [
     HeaderComponent,
     TableComponent,
-    SearchComponent,
+    MatSpinner,
 
     FormsModule,
     ReactiveFormsModule,

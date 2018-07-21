@@ -4,5 +4,6 @@ export interface SearchRequest {
 
 export interface SearchType {
     title: String;
-    src: String;
+    class: String;
+    icon: String;
 }

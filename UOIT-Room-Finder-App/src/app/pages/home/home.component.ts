@@ -40,25 +40,21 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   headerRequest: HeaderRequest = {
     title: 'UOIT Room Finder',
-  };
-
-  searchRequest: SearchRequest = {
     searchTypes: [
       {
         title: 'Time',
-        src: '../../../assets/images/time.svg'
+        class: 'material-icons',
+        icon: 'access_time'
       },
       {
         title: 'Room',
-        src: '../../../assets/images/room.svg'
+        class: 'material-icons',
+        icon: 'meeting_room'
       },
       {
         title: 'Building',
-        src: '../../../assets/images/time.svg'
-      },
-      {
-        title: 'Extra',
-        src: '../../../assets/images/extra.svg'
+        class: 'material-icons',
+        icon: 'location_city'
       }
     ]
   };
@@ -72,7 +68,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       {name: 'Room', key: 'room', width: 200, align: 'center'},
       {name: 'Building', key: 'building', width: 300, align: 'center'},
       {
-        name: 'Lab', key: 'isLab', width: 150, align: 'center', image:
+        name: 'Notes', key: 'isLab', width: 150, align: 'center', image:
           {trueValue: true, trueImageRef: '../../../assets/images/warning.svg', falseImageRef: ''}
       },
     ],

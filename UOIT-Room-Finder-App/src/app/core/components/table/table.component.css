@@ -15,12 +15,15 @@
 
 .refreshIcon {
     float: right;
-    padding: 12px;
+    padding: 5px;
     cursor: pointer;
     font-size: 2em;
-    padding: none;
     color: #1870af;
     text-shadow:  -1px 2px #d8d6d6;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
 }
 
 .header-blue > td {
@@ -42,7 +45,7 @@
 
 .mat-card {
   padding: 0;
-  height: 650px;
+  height: 600px;
   overflow: auto;
 }
 

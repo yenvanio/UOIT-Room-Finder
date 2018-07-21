@@ -1,4 +1,16 @@
-<mat-toolbar class="container">
-    <img class="logo" src="../../../../assets/images/favicon.png" alt="logo" />
-    <span class="title">{{ data.title }}</span>
-</mat-toolbar>
+<mat-card class="cardContainer">
+
+    <div class="brandContainer">
+        <img class="logo" src="../../../../assets/images/favicon.png" alt="logo" />
+        <span class="title">{{ data.title }}</span>
+    </div>
+
+    <div class="searchContainer">
+        <ng-container *ngFor="let search of data.searchTypes">
+            <button mat-raised-button class="searchDiv" matTooltip="{{search.title}}">
+                <i class="{{search.class}} blueTint md-48 ">{{ search.icon }}</i>
+            </button>
+        </ng-container>
+    </div>
+
+</mat-card>
