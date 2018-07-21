@@ -1,3 +1,4 @@
-<app-header [data]="headerRequest"></app-header>
+<app-header [data]="headerRequest" (timeEmitter)="goToTime()" (roomEmitter)="goToRoom($event)"
+            (buildingEmitter)="goToBuilding($event)" (helpEmitter)="goToHelp($event)"></app-header>
 <div class="spacerDiv"></div>
 <app-table [data]="tableRequest"></app-table>

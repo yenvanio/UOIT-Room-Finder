@@ -44,17 +44,26 @@ export class HomeComponent implements OnInit, OnDestroy {
       {
         title: 'Time',
         class: 'material-icons',
-        icon: 'access_time'
+        icon: 'access_time',
+        key: 'time'
       },
       {
         title: 'Room',
         class: 'material-icons',
-        icon: 'meeting_room'
+        icon: 'meeting_room',
+        key: 'room'
       },
       {
         title: 'Building',
         class: 'material-icons',
-        icon: 'location_city'
+        icon: 'location_city',
+        key: 'building'
+      },
+      {
+        title: 'Help',
+        class: 'material-icons',
+        icon: 'help_outline',
+        key: 'help'
       }
     ]
   };
@@ -68,7 +77,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       {name: 'Room', key: 'room', width: 200, align: 'center'},
       {name: 'Building', key: 'building', width: 300, align: 'center'},
       {
-        name: 'Notes', key: 'isLab', width: 150, align: 'center', image:
+        name: '', key: 'isLab', width: 150, align: 'center', image:
           {trueValue: true, trueImageRef: '../../../assets/images/warning.svg', falseImageRef: ''}
       },
     ],
@@ -130,6 +139,30 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   private _buildPage(routeData: any) {
     // Add Code
+  }
+
+  /**
+   * Functions for the event emitters from the page header component
+   */
+
+  /** Search By Time */
+  goToTime() {
+
+  }
+
+  /** Search By Room */
+  goToRoom() {
+
+  }
+
+  /** Search By Building */
+  goToBuilding() {
+
+  }
+
+  /** Go to Help Page */
+  goToHelp() {
+
   }
 
   /**

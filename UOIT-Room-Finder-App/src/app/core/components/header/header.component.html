@@ -7,8 +7,8 @@
 
     <div class="searchContainer">
         <ng-container *ngFor="let search of data.searchTypes">
-            <button mat-raised-button class="searchDiv" matTooltip="{{search.title}}">
-                <i class="{{search.class}} blueTint md-48 ">{{ search.icon }}</i>
+            <button mat-raised-button class="searchDiv" matTooltip="{{search.title}}" (click)="buttonClick({{search.key}})">
+                <i class="{{search.class}} blueTint md-36 ">{{ search.icon }}</i>
             </button>
         </ng-container>
     </div>
