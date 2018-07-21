@@ -1,13 +1,17 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {APP_BASE_HREF} from '@angular/common';
-import {HomeComponent} from './pages/home/home.component';
-import {ErrorComponent} from './pages/error/error.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
+import { HomeComponent } from './pages/home/home.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { HomeResolver } from './resolvers/home.resolver';
 
 const appRoutes: Routes = [
   {
     path: 'app',
-    component: HomeComponent
+    component: HomeComponent,
+    resolve: {
+      classes: HomeResolver
+    }
   },
   {
     path: 'error',

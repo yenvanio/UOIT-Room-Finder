@@ -6,6 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { HomeResolver } from './resolvers/home.resolver';
+import { HomeService } from './services/home.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -13,15 +16,19 @@ import { ErrorComponent } from './pages/error/error.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+  ],
+  providers: [
+    HomeResolver,
+    HomeService
   ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

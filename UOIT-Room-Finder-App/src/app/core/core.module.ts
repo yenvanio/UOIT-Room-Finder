@@ -29,6 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/header/header.component';
 import { TableComponent } from './components/table/table.component';
+import { SearchComponent } from './components/search/search.component';
+import { CoreService } from './services/core.service';
 
 
 @NgModule({
@@ -62,11 +64,13 @@ import { TableComponent } from './components/table/table.component';
   ],
   declarations: [
     HeaderComponent,
-    TableComponent
+    TableComponent,
+    SearchComponent
   ],
   exports: [
     HeaderComponent,
     TableComponent,
+    SearchComponent,
 
     FormsModule,
     ReactiveFormsModule,
@@ -96,7 +100,7 @@ import { TableComponent } from './components/table/table.component';
     MatTooltipModule
   ],
   providers: [
-
+    CoreService
   ]
 })
 

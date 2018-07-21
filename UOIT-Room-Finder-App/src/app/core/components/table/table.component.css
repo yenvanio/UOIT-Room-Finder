@@ -29,11 +29,11 @@
 }
 
 .row-blue:hover {
-  background-color: #1d88d3 !important;
+  background-color: #F5F9FD !important;
 }
 
 .row-click-blue {
-  background-color: #1d88d3 !important;
+  background-color: #F5F9FD !important;
 }
 
 .mat-row:hover {
@@ -42,7 +42,7 @@
 
 .mat-card {
   padding: 0;
-  /* height: $layout-height; */
+  height: 650px;
   overflow: auto;
 }
 
@@ -50,22 +50,27 @@
   width: 100%;
   background: white;
   table-layout: fixed;
+  border-collapse: collapse;
 }
 
 tr.mat-row {
   cursor: pointer;
-  /* height: $row-height; */
+  height: 50px;
 }
 
 tr.mat-header-row {
-  /* height: $row-height; */
+  height: 50px;
 }
 
 td {
-  font-size: 16px;
+  font-size: 14px;
   font-family: Verdana, sans-serif;
   color: black;
   padding: 0 2px;
+}
+
+td.mat-cell {
+  border: none;
 }
 
 .mat-header-row > td {
@@ -73,7 +78,7 @@ td {
   top: 0;
   background-color: white;
   z-index: 1;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .mat-header-row > td:first-of-type, .mat-row > td:first-of-type {
