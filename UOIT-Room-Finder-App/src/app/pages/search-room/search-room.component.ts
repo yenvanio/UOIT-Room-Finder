@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 import * as moment from 'moment';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CustomValidators } from '../../core/validators';
+import {finalize, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-room',
@@ -20,7 +21,11 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
    * Classes
    * @type {Class[]}
    */
-  private _classes: Class[] = [];
+  private _Mclasses: Class[] = [];
+  private _Tclasses: Class[] = [];
+  private _Wclasses: Class[] = [];
+  private _Rclasses: Class[] = [];
+  private _Fclasses: Class[] = [];
 
   /**
    * Used to hold location change subscription
@@ -42,7 +47,7 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
   MtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
-      {name: 'Monday', key: 'M', width: 200, align: 'center'},
+      {name: 'Monday', key: 'time', width: 200, align: 'center'},
       {name: 'Type', key: 'type', width: 300, align: 'center'}
     ],
     data: [],
@@ -52,7 +57,7 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
   TtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
-      {name: 'Tuesday', key: 'T', width: 200, align: 'center'},
+      {name: 'Tuesday', key: 'time', width: 200, align: 'center'},
       {name: 'Type', key: 'type', width: 300, align: 'center'}
     ],
     data: [],
@@ -62,7 +67,7 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
   WtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
-      {name: 'Wednesday', key: 'W', width: 200, align: 'center'},
+      {name: 'Wednesday', key: 'time', width: 200, align: 'center'},
       {name: 'Type', key: 'type', width: 300, align: 'center'}
     ],
     data: [],
@@ -72,7 +77,7 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
   RtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
-      {name: 'Thursday', key: 'R', width: 200, align: 'center'},
+      {name: 'Thursday', key: 'time', width: 200, align: 'center'},
       {name: 'Type', key: 'type', width: 300, align: 'center'}
     ],
     data: [],
@@ -82,7 +87,7 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
   FtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
-      {name: 'Friday', key: 'F', width: 200, align: 'center'},
+      {name: 'Friday', key: 'time', width: 200, align: 'center'},
       {name: 'Type', key: 'type', width: 300, align: 'center'}
     ],
     data: [],
@@ -136,12 +141,48 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
     // Add Code
   }
 
-  /**
-   * Refresh and update table
-   */
-  refreshTable() {
-    console.log('refresh');
-    this._hService.getWithoutParam();
+  search() {
+    const room = this.form.get('room').value;
+    this._hService.getRoomSchedule(room).pipe(takeWhile(() => this._alive),
+    finalize(() => {
+      this.MtableRequest.data = this._Mclasses;
+      this.TtableRequest.data = this._Tclasses;
+      this.WtableRequest.data = this._Wclasses;
+      this.RtableRequest.data = this._Rclasses;
+      this.FtableRequest.data = this._Fclasses;
+      this.update++;
+    })).subscribe(
+      result => {
+        console.log(result);
+        this.emptyArrays();
+        result.classes.forEach(c => {
+          c.time = moment(c.start_time, 'HH:mm:ss').format('hh:mm A') + ' - ' + moment(c.end_time, 'HH:mm:ss').format('hh:mm A');
+          if (c.start_date !== c.end_date) {
+            c.type = 'Every Week';
+          } else {
+            c.type = 'Only on ' + moment(c.start_date).format('MMM Do YY')
+          }
+          if (c.day === 'M') {
+            this._Mclasses.push(c);
+          } else if (c.day === 'T') {
+            this._Tclasses.push(c);
+          } else if (c.day === 'W') {
+            this._Wclasses.push(c);
+          } else if (c.day === 'R') {
+            this._Rclasses.push(c);
+          } else if (c.day === 'F') {
+            this._Fclasses.push(c);
+          }
+        });
+      });
+  }
+
+  emptyArrays() {
+    this._Mclasses = [];
+    this._Tclasses = [];
+    this._Wclasses = [];
+    this._Rclasses = [];
+    this._Fclasses = [];
   }
 
   /**
@@ -165,5 +206,13 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
    */
   goBack() {
     this._router.navigate(['/app/home']);
+  }
+
+  /**
+   * Whether the user can search or not.
+   * @returns {boolean}
+   */
+  get cantSearch() {
+    return this.form.invalid;
   }
 }

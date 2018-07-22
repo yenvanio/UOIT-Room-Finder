@@ -21,18 +21,18 @@
 
 <mat-card class="table-container">
 
-  <app-table [data]="MtableRequest"></app-table>
+  <app-table [data]="MtableRequest" [update]="update"></app-table>
   <div class="miniSpacerDiv"></div>
-  <app-table [data]="TtableRequest"></app-table>
-  <div class="miniSpacerDiv"></div>
-  <div class="miniSpacerDiv"></div>
-  <app-table [data]="WtableRequest"></app-table>
+  <app-table [data]="TtableRequest" [update]="update"></app-table>
   <div class="miniSpacerDiv"></div>
   <div class="miniSpacerDiv"></div>
-  <app-table [data]="RtableRequest"></app-table>
+  <app-table [data]="WtableRequest" [update]="update"></app-table>
   <div class="miniSpacerDiv"></div>
   <div class="miniSpacerDiv"></div>
-  <app-table [data]="FtableRequest"></app-table>
+  <app-table [data]="RtableRequest" [update]="update"></app-table>
+  <div class="miniSpacerDiv"></div>
+  <div class="miniSpacerDiv"></div>
+  <app-table [data]="FtableRequest" [update]="update"></app-table>
   <div class="miniSpacerDiv"></div>
 
 

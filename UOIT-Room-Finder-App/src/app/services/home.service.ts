@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {API_URL} from '../core/constants';
-import * as moment from 'moment';
 import { Class } from '../models/class';
 
 @Injectable()
@@ -15,7 +14,7 @@ export class HomeService {
    */
   constructor(private _http: HttpClient) { }
 
-  getByParam(date: String, start_time: String, end_time: String, building: String): Observable<Class[]> {
+  getByParam(date: String, start_time: String, end_time: String): Observable<Class[]> {
     let apiURL = `${API_URL}/classes`;
     if (date) {
       apiURL += `?date=${date}`;
@@ -26,15 +25,19 @@ export class HomeService {
     if (end_time) {
       apiURL += `&end_time=${end_time}`;
     }
-    if (building) {
-      apiURL += `&building=${building}`;
-    }
-
     return this._http.get<Class[]>(apiURL);
   }
 
   getWithoutParam(): Observable<Class[]> {
     return this._http.get<Class[]>(`${API_URL}/classes`);
+  }
+
+  getRoomSchedule(room: String): Observable<Class[]> {
+    let apiURL = `${API_URL}/roomSchedule`;
+    if (room) {
+      apiURL += `?room=${room}`;
+    }
+    return this._http.get<Class[]>(apiURL);
   }
 
 }

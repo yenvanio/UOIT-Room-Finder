@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 import * as moment from 'moment';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CustomValidators } from '../../core/validators';
+import {finalize, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-time',
@@ -106,13 +107,26 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
     // Add Code
   }
 
-  /**
-   * Refresh and update table
-   */
-  refreshTable() {
-    console.log('refresh');
-    this._hService.getWithoutParam();
+  search() {
+    const date = this.form.get('date').value.format('YYYY-MM-DD') || moment().format('YYYY-MM-DD');
+    const start_time = this.form.get('start_time').value || moment().format('HH:mm:ss');
+    const end_time = this.form.get('end_time').value || moment(date + ' ' + start_time).add(1, 'hours').format('HH:mm:ss');
+    this._hService.getByParam(date, start_time, end_time).pipe(takeWhile(() => this._alive),
+    finalize(() => {
+      console.log(this._classes);
+      this.tableRequest.data = this._classes;
+      this.update++;
+    })).subscribe(
+      result => {
+        result.classes.forEach(c => {
+          if (c.type === 'Laboratory') {
+            c.isLab = true;
+          }
+        });
+        this._classes = result.classes;
+      });
   }
+
 
   /**
    * Display more information about a row from the table
@@ -135,6 +149,14 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    */
   goBack() {
     this._router.navigate(['/app/home']);
+  }
+
+  /**
+   * Whether the user can search or not.
+   * @returns {boolean}
+   */
+  get cantSearch() {
+    return this.form.invalid;
   }
 
 }

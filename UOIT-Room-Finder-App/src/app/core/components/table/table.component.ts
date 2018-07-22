@@ -7,7 +7,7 @@ import {MatSort, MatTableDataSource} from '@angular/material';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit, AfterViewInit, OnChanges {
+export class TableComponent implements OnInit, OnChanges {
 
   /**
    * Emits data to parent component when buttons are clicked
@@ -42,12 +42,6 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
    * Used to clear coloring on table from parent component.
    */
   @Input() clearColor: number;
-
-  /**
-   * Emits data to parent component when a cell is clicked.
-   * @type {EventEmitter<AllData>}
-   */
-  @Output() cellClickEmitter: EventEmitter<AllData> = new EventEmitter<AllData>();
 
   /**
    * Holds table headers since mat-table only accepts a string[] for headers.
@@ -89,28 +83,15 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
   /**
    * Detect changes.
-   * Updates filtering when filter text is changed and updates data when an update is triggered
-   * Clears coloring from table if clearColor is changed
    * @param {SimpleChanges} changes
    */
   ngOnChanges(changes: SimpleChanges) {
-    // Only check the filter if it is not the first change trigger
-    if (changes.filter && !changes.filter.firstChange) {
-      let filter = changes.filter.currentValue.trim();
-      filter = filter.toLowerCase();
-      this.dataSource.filter = filter;
-    } else if (changes.update && !changes.update.firstChange) {
+    // Checks if update is incremented, which means the data has been updated
+    if (changes.update && !changes.update.firstChange) {
+      console.log('changed');
       this.dataSource.data = this.data.data;
-    } else if (changes.clearColor && !changes.clearColor.firstChange) {
-      this.data.data.forEach(r => r.clicked = false);
+      console.log(this.data.data);
     }
-  }
-
-  /**
-   * Set the sorting after the view is initialized.
-   */
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
   }
 
   /**

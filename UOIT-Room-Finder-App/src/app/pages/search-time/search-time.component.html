@@ -36,4 +36,4 @@
   </div>
 </div>
 
-<app-table [data]="tableRequest" (rowEmitter)="goToDetails($event)" (refreshEmitter)="refreshTable()"></app-table>
+<app-table [data]="tableRequest" [update]="update" (rowEmitter)="goToDetails($event)" (refreshEmitter)="refreshTable()"></app-table>

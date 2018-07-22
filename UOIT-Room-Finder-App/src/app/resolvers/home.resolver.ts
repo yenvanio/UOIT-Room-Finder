@@ -26,4 +26,3 @@ export class HomeResolver implements Resolve<Observable<Class[]>> {
     return this._hService.getWithoutParam();
   }
 }
-// moment().format('YYYY-MM-DD')

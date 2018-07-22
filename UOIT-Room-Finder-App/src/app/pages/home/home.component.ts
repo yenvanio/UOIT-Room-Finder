@@ -6,7 +6,7 @@ import { CoreService } from '../../core/services/core.service';
 import { Class } from '../../models/class';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { Location } from '@angular/common';
-import * as moment from 'moment';
+import {finalize, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -118,7 +118,20 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   refreshTable() {
     console.log('refresh');
-    this._hService.getWithoutParam();
+    this._hService.getWithoutParam().pipe(takeWhile(() => this._alive),
+    finalize(() => {
+      console.log(this._classes);
+      this.tableRequest.data = this._classes;
+      this.update++;
+    })).subscribe(
+      result => {
+        result.classes.forEach(c => {
+          if (c.type === 'Laboratory') {
+            c.isLab = true;
+          }
+        });
+        this._classes = result.classes;
+      });
   }
 
   /**
