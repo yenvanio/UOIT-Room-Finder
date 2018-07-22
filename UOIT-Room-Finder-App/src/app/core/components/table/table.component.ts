@@ -115,8 +115,8 @@ export class TableComponent implements OnInit, OnChanges {
    * @returns {string}
    */
   getType(header: Header): string {
-    if (header.image) {
-      return 'image';
+    if (header.icon) {
+      return 'icon';
     } else {
       return 'none';
     }

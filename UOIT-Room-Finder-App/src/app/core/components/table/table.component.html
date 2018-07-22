@@ -33,17 +33,23 @@
                     {{ item[header.key] }}
               </span>
 
-              <i *ngSwitchCase="'icon'" class="{{header.icon.class}} yellowTint md-24">{{ header.icon.icon }}</i>
+              <div *ngSwitchCase="'icon'">
+                <i *ngIf="item.isLab == true" matTooltip="{{header.icon.title}}" class="{{header.icon.class}} yellowTint md-24">
+                  {{ header.icon.icon }}
+                </i>
+              </div>
 
             </div>
           </td>
   
         </ng-container>
   
-        
         <tr mat-header-row *matHeaderRowDef="headers" [ngClass]="'header-' + data.theme"></tr>
         <tr mat-row *matRowDef="let row; columns: headers;" [ngClass]="'row-' + data.theme + ' ' + markOnClick(row)" (click)="rowClick(row)"></tr>
+
+
       </table>
 
     </mat-card>
+    
   </div>

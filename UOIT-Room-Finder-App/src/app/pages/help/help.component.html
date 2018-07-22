@@ -1,3 +1,44 @@
-<p>
-  help works!
-</p>
+<app-header></app-header>
+
+<mat-card class="contactCard">
+    
+  <div class="contactTitle"> <span>Contact</span> </div>
+  <div class="miniSpacerDiv"></div>
+
+  <div class="contactDiv">
+    <button mat-raised-button class="mail" matTooltip="E-Mail">
+        <i class="material-icons blueTint md-24 ">mail</i>
+    </button>
+    <button mat-raised-button class="dev" matTooltip="Developer Page">
+        <i class="material-icons blueTint md-24 ">play_arrow</i>
+    </button>
+    <button mat-raised-button class="web" matTooltip="Website">
+        <i class="material-icons blueTint md-24">language</i>
+    </button>
+  </div>
+
+  <div class="spacerDiv"></div>
+
+  <div class="contactTitle"> <span>F.A.Q</span> </div>
+  <div class="miniSpacerDiv"></div>
+
+  <div class="faqDiv">
+    <p class="question">What does Room Finder do?</p>
+    <div class="xsSpacerDiv"></div>
+    <p class="answer">Room Finder uses the schedules created at the beginning of the semester to determine when a room is not being used by any classes.</p>
+    
+    <div class="spacerDiv"></div>
+    
+    <p class="question">What doesn't Room Finder do?</p>
+    <div class="xsSpacerDiv"></div>
+    <p class="answer">Room Finder does not provide live updates and sometimes a room may be booked by clubs, societies or other organizations which Room Finder doesn't take into account.</p>
+    
+    <div class="spacerDiv"></div>
+    
+    <p class="question">How do I use Room Finder?</p>
+    <div class="xsSpacerDiv"></div>
+    <p class="answer">The ( Home <i class="material-icons blueTint md-24 ">home</i> ) page has a list of current open rooms and you can choose to search by 
+      ( Room<i class="material-icons blueTint md-24 ">meeting_room</i> ) or  ( Time<i class="material-icons blueTint md-24 ">access_time</i> ) from the navigation menu. By clicking on an open room you will be able to see when the next class is and where the building is located on the map.</p>
+  </div>
+
+</mat-card>

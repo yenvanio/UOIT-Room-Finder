@@ -9,7 +9,8 @@ import { Location } from '@angular/common';
 import * as moment from 'moment';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CustomValidators } from '../../core/validators';
-import {finalize, takeWhile} from 'rxjs/operators';
+import { finalize, takeWhile } from 'rxjs/operators';
+import {TIME_DROPDOWN} from '../../core/constants';
 
 @Component({
   selector: 'app-search-time',
@@ -22,6 +23,8 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    * @type {Class[]}
    */
   private _classes: Class[] = [];
+
+  private timeSelect = TIME_DROPDOWN;
 
   /**
    * Used to hold location change subscription
@@ -156,7 +159,11 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    * @returns {boolean}
    */
   get cantSearch() {
-    return this.form.invalid;
+    const date = moment().format('YYYY-MM-DD');
+    console.log(moment(date + ' ' + this.form.get('start_time').value));
+    console.log(moment(date + ' ' + this.form.get('end_time').value));
+    return this.form.invalid ||
+      Date.parse('01/01/2011 ' + this.form.get('start_time').value) >= Date.parse('01/01/2011 ' + this.form.get('end_time').value);
   }
 
 }

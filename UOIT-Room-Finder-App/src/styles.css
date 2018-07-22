@@ -4,6 +4,10 @@
     padding: 0; 
 }
 
+.xsSpacerDiv {
+    min-height: 5px;
+}
+
 .miniSpacerDiv {
     min-height: 25px;
 }
@@ -13,7 +17,7 @@
 }
 
 .yellowTint {
-    color: yellow;
+    color: #FFCC00;
 }
 
 .blueTint {

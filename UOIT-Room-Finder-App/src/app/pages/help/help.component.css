@@ -1,0 +1,31 @@
+.contactDiv {
+    display: grid;
+    width: 100%;
+    grid-template-rows: 50px 50px;
+    grid-template-columns: 20% 20% 20% 20%;
+    justify-content: space-evenly;
+}
+
+.contactTitle {
+    font-size: 30px;
+    border-bottom: solid 1px #ddd;
+}
+
+.contactDiv > button {
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    border: #1870af solid 1px;
+}
+
+.question {
+    font-size: 20px;
+}
+
+.answer {
+    font-size: 15px;
+}
+
+i {
+    vertical-align: middle;
+}

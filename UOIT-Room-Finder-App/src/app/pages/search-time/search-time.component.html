@@ -15,7 +15,9 @@
 
   <div class="start_time">
     <mat-form-field>
-        <input matInput formControlName="start_time" [placeholder]="Start" type="text">
+        <mat-select formControlName="start_time" type="text">
+            <mat-option *ngFor="let time of timeSelect" [value]="time.value">{{time.time}}</mat-option>
+        </mat-select>
         <span matPrefix class="blueTint">Start Time:&nbsp;</span>
         <mat-error>{{getError('start_time')}}</mat-error>
     </mat-form-field>
@@ -23,7 +25,9 @@
 
   <div class="end_time">
       <mat-form-field>
-          <input matInput formControlName="end_time" [placeholder]="End" type="text">
+          <mat-select formControlName="end_time" type="text">
+              <mat-option *ngFor="let time of timeSelect" [value]="time.value">{{time.time}}</mat-option>
+          </mat-select>
           <span matPrefix class="blueTint">End Time:&nbsp;</span>
           <mat-error>{{getError('end_time')}}</mat-error>
       </mat-form-field>

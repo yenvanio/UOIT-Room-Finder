@@ -91,6 +91,16 @@ td.mat-cell {
   padding-right: 12px;
 }
 
+.emptyMessage {
+  text-align: center;
+  margin-top: 50%;
+  height: 100%;
+}
+
+.emptyMessage > span {
+  font-size: 30px;
+}
+
 ::ng-deep .mat-sort-header-container {
   justify-content: inherit !important;
 }
