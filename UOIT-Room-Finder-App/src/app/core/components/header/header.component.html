@@ -1,16 +1,18 @@
-<mat-card class="cardContainer">
+<mat-card class="cardContainer" class="container-fluid">
+    <div class="row">
+        <div class="brandContainer" class="col-sm-4">
+            <img class="logo" src="../../../../assets/images/favicon.png" alt="logo" />
+            <span class="title">{{ data.title }}</span>
+        </div>
 
-    <div class="brandContainer">
-        <img class="logo" src="../../../../assets/images/favicon.png" alt="logo" />
-        <span class="title">{{ data.title }}</span>
+        <div class="searchContainer" class="col-sm-8">
+            <div class="row right">
+                <div *ngFor="let search of data.searchTypes" class="col-sm">
+                        <button mat-raised-button class="searchDiv" matTooltip="{{search.title}}" (click)="buttonClick(search.key)">
+                            <i class="{{search.class}} blueTint md-24 ">{{ search.icon }}</i>
+                        </button>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="searchContainer">
-        <ng-container *ngFor="let search of data.searchTypes">
-            <button mat-raised-button class="searchDiv" matTooltip="{{search.title}}" (click)="buttonClick(search.key)">
-                <i class="{{search.class}} blueTint md-24 ">{{ search.icon }}</i>
-            </button>
-        </ng-container>
-    </div>
-
 </mat-card>

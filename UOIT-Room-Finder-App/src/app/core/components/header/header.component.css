@@ -1,25 +1,14 @@
-.cardContainer {
-    display: grid;
-    grid-template-rows: 0%;
-    grid-template-columns: 50% 50%;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+.cardContainer{
+    width: 100%;
 }
 
-.searchContainer {
-    display: grid;
-    grid-template-rows: 0%;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    justify-content: space-evenly;
+.right {
+    float: right;
 }
 
 .searchDiv {
     height: 50px;
     width: 50px;
-    grid-row-start: 1;
-    grid-row-end: 1;
     text-align: center;
     border: #1870af solid 1px;
 }

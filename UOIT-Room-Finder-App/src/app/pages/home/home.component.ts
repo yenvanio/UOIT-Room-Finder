@@ -96,7 +96,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this._classes.push(c);
       });
     } else {
-
+      this._endCountDown();
     }
     this.tableRequest.data = this._classes;
     this.update++;
@@ -153,6 +153,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
+  private _endCountDown() {
+    document.getElementById('countdown').innerHTML = 'No Open Classrooms';
+    this._countDownTimerText = 'No Open Classrooms';
+  }
+
   /**
    * Refresh and update table
    */
@@ -174,7 +179,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         });
         this._classes = result.classes;
       });
-    this._startCountDown();
+    if (this._classes.length > 0) {
+      this._startCountDown();
+    } else {
+      this._endCountDown();
+    }
   }
 
   /**
