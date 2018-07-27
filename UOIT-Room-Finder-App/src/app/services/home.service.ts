@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {API_URL} from '../core/constants';
+import {PROD_API_URL, DEV_API_URL} from '../core/constants';
 import { Class } from '../models/class';
 import { Room } from '../models/room';
 
@@ -16,7 +16,7 @@ export class HomeService {
   constructor(private _http: HttpClient) { }
 
   getByParam(date: String, start_time: String, end_time: String): Observable<Class[]> {
-    let apiURL = `${API_URL}/classes`;
+    let apiURL = `${PROD_API_URL}/classes`;
     if (date) {
       apiURL += `?date=${date}`;
     }
@@ -30,11 +30,11 @@ export class HomeService {
   }
 
   getWithoutParam(): Observable<Class[]> {
-    return this._http.get<Class[]>(`${API_URL}/classes`);
+    return this._http.get<Class[]>(`${PROD_API_URL}/classes`);
   }
 
   getRoomSchedule(room: String): Observable<Class[]> {
-    let apiURL = `${API_URL}/roomSchedule`;
+    let apiURL = `${PROD_API_URL}/roomSchedule`;
     if (room) {
       apiURL += `?room=${room}`;
     }
@@ -42,7 +42,7 @@ export class HomeService {
   }
 
   getFutureClasses(room: String, date: String, start_time: String): Observable<Class[]> {
-    let apiURL = `${API_URL}/futureClasses`;
+    let apiURL = `${PROD_API_URL}/futureClasses`;
     if (room) {
       apiURL += `?room=${room}`;
     }
@@ -56,7 +56,7 @@ export class HomeService {
   }
 
   getRooms() {
-    const apiURL = `${API_URL}/rooms`;
+    const apiURL = `${PROD_API_URL}/rooms`;
     return this._http.get<Room[]>(apiURL);
   }
 

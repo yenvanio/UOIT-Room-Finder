@@ -2,7 +2,7 @@ var config = {
   development: {
       //url to be used in link generation
       url: 'http://127.0.0.1',
-      //mongodb connection settings
+      //mysql connection settings
       database: {
           host: "localhost",
           user: "root",
@@ -18,11 +18,12 @@ var config = {
   production: {
       //url to be used in link generation
       url: 'http://uoit.yshiv.com/api',
-      //mongodb connection settings
+      //mysql connection settings
       database: {
-          host: '127.0.0.1',
-          port: '27017',
-          db:   'site'
+          host: 'uoitroomfinder.c3s9efoa2w20.us-east-1.rds.amazonaws.com',
+          user: "yenvanio",
+          password: "pikachu_touch",
+          database:   'Room_Finder'
       },
       //server details
       server: {
