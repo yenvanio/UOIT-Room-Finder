@@ -18,11 +18,11 @@ var db = require('../../config/db');
       SELECT class.room, building.name AS building, course.type, building.location FROM class 
           LEFT JOIN course ON class.fk_course_crn = course.crn
           LEFT JOIN building ON class.fk_building_id = building.id
-                WHERE class.day = '${data.day}' 
-                AND '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date
+                WHERE '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date
                 AND class.room NOT IN (
                     SELECT class.room FROM class
                     WHERE '${data.start_time}' >= class.start_time AND '${data.end_time}' <= class.end_time
+                    AND class.day = '${data.day}' 
                 ) GROUP BY class.room, building.name, course.type, building.location`;
 
       console.log(sql);
