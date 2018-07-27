@@ -1,23 +1,10 @@
-'use strict';
+var express = require('express');
+var app = express();
 
-var SwaggerExpress = require('swagger-express-mw');
-var app = require('express')();
-module.exports = app; // for testing
+var classController = require('./api/controllers/classes');
+app.use('/class', classController);
 
-var config = {
-  appRoot: __dirname // required config
-};
+var roomController = require('./api/controllers/rooms');
+app.use('/room', roomController);
 
-SwaggerExpress.create(config, function(err, swaggerExpress) {
-  if (err) { throw err; }
-
-  // install middleware
-  swaggerExpress.register(app);
-
-  var port = process.env.PORT || 10010;
-  app.listen(port);
-
-  if (swaggerExpress.runner.swagger.paths['/classes']) {
-    console.log('UOIT-Room-Finder-API Running @\n http://127.0.0.1:' + port);
-  }
-});
+module.exports = app;
