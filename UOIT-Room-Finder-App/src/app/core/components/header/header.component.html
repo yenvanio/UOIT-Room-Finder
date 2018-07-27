@@ -5,7 +5,7 @@
             <span class="title">{{ data.title }}</span>
         </div>
 
-        <div class="searchContainer" class="col-sm-8">
+        <div class="searchContainer" class="col-sm-8 desktop">
             <div class="row right">
                 <div *ngFor="let search of data.searchTypes" class="col-sm">
                         <button mat-raised-button class="searchDiv" matTooltip="{{search.title}}" (click)="buttonClick(search.key)">
@@ -14,5 +14,17 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="mobile searchContainer">
+            <ng-container *ngFor="let search of data.searchTypes; let i = index;">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <button mat-raised-button class="searchDiv" matTooltip="{{search.title}}" (click)="buttonClick(search.key)">
+                            <i class="{{search.class}} blueTint md-24 ">{{ search.icon }}</i>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
     </div>
 </mat-card>

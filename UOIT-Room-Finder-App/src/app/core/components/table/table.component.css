@@ -132,13 +132,18 @@ td.mat-cell {
   /* The row cells should display as a column, justified left, with a bit of extra padding */
   .mat-row { 
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     padding: 8px 24px;
+    min-width: 80px;
   }
 
   td.mat-cell {
     float: left;
-    text-align: center;
-    width: 100%;
+    text-align: left;
+    padding: 0px;
+  }
+
+  span {
+    padding: 0px;
   }
 }
