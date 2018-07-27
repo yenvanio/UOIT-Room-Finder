@@ -45,7 +45,8 @@ var db = require('../../config/db');
   */
   getFutureClasses = function (data, callback) {
     var sql = `
-    SELECT * FROM class 
+    SELECT class.room, class.start_time, class.end_time, course.title, course.code FROM class 
+        LEFT JOIN course ON class.fk_course_crn = course.crn
               WHERE class.day = '${data.day}'
               AND class.room = '${data.room}'
               AND '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date

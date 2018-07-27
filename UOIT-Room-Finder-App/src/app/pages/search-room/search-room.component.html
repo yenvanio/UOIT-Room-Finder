@@ -6,10 +6,13 @@
   <div></div>
   <div class="room">
       <mat-form-field>
-          <input matInput formControlName="room" [placeholder]="Room" type="text">
+          <input matInput formControlName="room" [placeholder]="Room" type="text" [matAutocomplete]="auto">
           <span matPrefix class="blueTint">Room:&nbsp;</span>
           <mat-error>{{getError('room')}}</mat-error>
       </mat-form-field>
+      <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let r of filteredRooms" [value]="r.room">{{ r.room }}</mat-option>
+      </mat-autocomplete>
   </div>
   <div></div>
   <div></div>

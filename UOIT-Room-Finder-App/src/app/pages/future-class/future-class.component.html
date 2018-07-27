@@ -1,0 +1,8 @@
+<app-header></app-header>
+
+<div class="spacerDiv">
+    <mat-card id="room"> <span>{{ this._room }} </span></mat-card>
+</div>
+<div class="miniSpacerDiv"></div>
+
+<app-table [data]="tableRequest" [update]="update" (rowEmitter)="goToDetails($event)" (refreshEmitter)="refreshTable()"></app-table>

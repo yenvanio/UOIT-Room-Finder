@@ -30,5 +30,24 @@ function getRoomSchedule(req, res) {
   });  
 }
 
+/**
+ * Get a list of all the rooms
+ * @param {Any} req 
+ * @param {Any} res 
+ */
+function getRooms(req, res) {
+  // Retrieve data from the Database
+  logic.getRooms(function (err, queryResult) {
+    console.log(queryResult);
+    if (err) {
+      res.statusCode = 500;
+      res.json({ errors: ['Unable to retrieve rooms!'] });
+    } else {
+      res.statusCode = 200;
+      res.json({ rooms: queryResult });
+    }
+  });  
+}
+
 // Add functions for classes module to export
-module.exports = { getRoomSchedule };
+module.exports = { getRoomSchedule, getRooms };

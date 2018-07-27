@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {API_URL} from '../core/constants';
 import { Class } from '../models/class';
+import { Room } from '../models/room';
 
 @Injectable()
 export class HomeService {
@@ -38,6 +39,25 @@ export class HomeService {
       apiURL += `?room=${room}`;
     }
     return this._http.get<Class[]>(apiURL);
+  }
+
+  getFutureClasses(room: String, date: String, start_time: String): Observable<Class[]> {
+    let apiURL = `${API_URL}/futureClasses`;
+    if (room) {
+      apiURL += `?room=${room}`;
+    }
+    if (date) {
+      apiURL += `&date=${date}`;
+    }
+    if (start_time) {
+      apiURL += `&start_time=${start_time}`;
+    }
+    return this._http.get<Class[]>(apiURL);
+  }
+
+  getRooms() {
+    const apiURL = `${API_URL}/rooms`;
+    return this._http.get<Room[]>(apiURL);
   }
 
 }

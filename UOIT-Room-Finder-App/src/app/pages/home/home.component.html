@@ -1,3 +1,12 @@
 <app-header></app-header>
-<div class="spacerDiv"></div>
-<app-table [data]="tableRequest" [update]="update" (rowEmitter)="goToDetails($event)" (refreshEmitter)="refreshTable()"></app-table>
+
+<div class="spacerDiv">
+    <mat-card id="countdown"> <span>{{ this._countDownTimerText }}</span></mat-card>
+</div>
+<div class="miniSpacerDiv"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <app-table [data]="tableRequest" [update]="update" (rowEmitter)="goToDetails($event)" (refreshEmitter)="refreshTable()"></app-table>
+    </div>
+</div>

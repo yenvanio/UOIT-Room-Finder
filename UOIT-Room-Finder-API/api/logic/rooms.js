@@ -35,5 +35,22 @@ var db = require('../../config/db');
     });                        
   }
 
+  getRooms = function (callback) {
+    var sql = `
+    SELECT DISTINCT(class.room), building.name, building.location FROM class
+        LEFT JOIN building ON class.fk_building_id = building.id`
+
+    console.log(sql);
+
+    db.query(sql, function(err, res) {
+      if (err) {
+        callback(err, null);
+      } 
+      else {
+        callback(null, res);
+      }
+    });   
+  }
+
 // Add functions for classes module to export
-module.exports = { getRoomSchedule };
+module.exports = { getRoomSchedule, getRooms };

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {
+  MatAutocompleteModule,
   MatBadgeModule,
   MatButtonModule,
   MatCardModule,
@@ -38,6 +39,7 @@ import { CoreService } from './services/core.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
     MatCardModule,
@@ -75,6 +77,7 @@ import { CoreService } from './services/core.service';
     FormsModule,
     ReactiveFormsModule,
 
+    MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
     MatCardModule,

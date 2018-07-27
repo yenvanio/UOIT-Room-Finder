@@ -4,9 +4,12 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeResolver } from './resolvers/home.resolver';
+import { FutureClassResolver } from './resolvers/future-class.resolver';
 import { SearchTimeComponent } from './pages/search-time/search-time.component';
 import { SearchRoomComponent } from './pages/search-room/search-room.component';
 import { HelpComponent } from './pages/help/help.component';
+import { FutureClassComponent } from './pages/future-class/future-class.component';
+import { RoomResolver } from './resolvers/room.resolver';
 
 const appRoutes: Routes = [
   {
@@ -28,6 +31,16 @@ const appRoutes: Routes = [
   {
     path: 'app/search/room',
     component: SearchRoomComponent,
+    resolve: {
+      rooms: RoomResolver
+    }
+  },
+  {
+    path: 'app/search/future',
+    component: FutureClassComponent,
+    resolve: {
+      classes: FutureClassResolver,
+    }
   },
   {
     path: 'app/help',

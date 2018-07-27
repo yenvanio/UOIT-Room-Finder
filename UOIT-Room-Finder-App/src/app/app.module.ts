@@ -10,9 +10,12 @@ import { ErrorComponent } from './pages/error/error.component';
 import { HomeResolver } from './resolvers/home.resolver';
 import { HomeService } from './services/home.service';
 import { HttpClientModule } from '@angular/common/http';
-import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { SearchRoomComponent } from './pages/search-room/search-room.component';
 import { HelpComponent } from './pages/help/help.component';
+import { FutureClassComponent } from './pages/future-class/future-class.component';
+import { FutureClassResolver } from './resolvers/future-class.resolver';
+import { RoomResolver } from './resolvers/room.resolver';
 
 @NgModule({
   declarations: [
@@ -21,11 +24,14 @@ import { HelpComponent } from './pages/help/help.component';
     ErrorComponent,
     SearchTimeComponent,
     SearchRoomComponent,
-    HelpComponent,
+    FutureClassComponent,
+    HelpComponent
   ],
   providers: [
     HomeResolver,
-    HomeService
+    HomeService,
+    FutureClassResolver,
+    RoomResolver
   ],
   imports: [
     AppRoutingModule,

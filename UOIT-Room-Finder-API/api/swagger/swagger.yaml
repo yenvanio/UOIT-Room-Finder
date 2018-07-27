@@ -109,6 +109,22 @@ paths:
             description: Error
             schema:
               $ref: "#/definitions/ErrorResponse"
+  /rooms:
+      # binds a127 app logic to a route 
+      x-swagger-router-controller: rooms
+      get: 
+        description: Returns a list of all the rooms
+        # used as the method name of the controller 
+        operationId: getRooms
+        responses:
+          "200":
+            description: An array of Room objects
+            schema:
+              $ref: "#/definitions/Room"
+          default:
+            description: Error
+            schema:
+              $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 
@@ -123,6 +139,18 @@ definitions:
       building: 
         type: string
         example: Science Building (UA)
+  Room:
+    type: object
+    properties:
+      room: 
+        type: string
+        example: UA1350
+      building: 
+        type: string
+        example: Science Building (UA)
+      location: 
+        type: string
+        example: '43.897385, -78.857999'
   ErrorResponse:
     required:
       - message

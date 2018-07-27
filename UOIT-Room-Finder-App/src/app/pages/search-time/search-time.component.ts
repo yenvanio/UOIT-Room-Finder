@@ -48,7 +48,7 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
     headers: [
       {name: 'Room', key: 'room', width: 200, align: 'center'},
       {name: 'Building', key: 'building', width: 300, align: 'center'},
-      {name: '', key: 'isLab', width: 150, align: 'center',
+      {name: '', key: 'isLab', width: 50, align: 'left',
         icon: {
           title: 'Lab Room: Might be Locked!',
           class: 'material-icons',

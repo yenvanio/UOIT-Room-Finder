@@ -6,13 +6,13 @@
   <div class="miniSpacerDiv"></div>
 
   <div class="contactDiv">
-    <button mat-raised-button class="mail" matTooltip="E-Mail">
+    <button mat-raised-button class="mail" matTooltip="E-Mail" (click)="newTab('mail')">
         <i class="material-icons blueTint md-24 ">mail</i>
     </button>
-    <button mat-raised-button class="dev" matTooltip="Developer Page">
+    <button mat-raised-button class="dev" matTooltip="Developer Page" (click)="newTab('devPage')">
         <i class="material-icons blueTint md-24 ">play_arrow</i>
     </button>
-    <button mat-raised-button class="web" matTooltip="Website">
+    <button mat-raised-button class="web" matTooltip="Website" (click)="newTab('website')">
         <i class="material-icons blueTint md-24">language</i>
     </button>
   </div>

@@ -4,12 +4,13 @@ import { HomeService } from '../../services/home.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoreService } from '../../core/services/core.service';
 import { Class } from '../../models/class';
+import { Room } from '../../models/room';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { Location } from '@angular/common';
 import * as moment from 'moment';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CustomValidators } from '../../core/validators';
-import {finalize, takeWhile} from 'rxjs/operators';
+import { finalize, takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-room',
@@ -34,6 +35,9 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
 
   /** To unsubscribe from observables. */
   private _alive = true;
+
+  private _rooms: Room[] = [];
+  private filteredRooms: Room[] = [];
 
   /**
    * Used to update table details structure
@@ -117,10 +121,27 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
     private _cService: CoreService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _location: Location) { }
+    private _location: Location) {
+      // Checking to see if resolver delivered data correctly
+      const routeData = this._route.snapshot.data;
+      if (!routeData.rooms) {
+        this._cService.error('500', 'Rooms could not be retrieved');
+      }
+    }
 
   ngOnInit() {
+    const routeData = this._route.snapshot.data;
+    console.log(routeData);
+
+    if (routeData.rooms.rooms.length > 0) {
+      /* Rooms */
+      routeData.rooms.rooms.forEach(c => {
+        this._rooms.push(c);
+      });
+    }
+    this._handleRoomFiltering();
     this._locationSubscription = this._location.subscribe(e => this.goBack());
+    this._buildPage(routeData);
   }
 
   /**
@@ -139,6 +160,18 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
    */
   private _buildPage(routeData: any) {
     // Add Code
+  }
+
+  /**
+   * Filters the room list
+   * @private
+   */
+  private _handleRoomFiltering() {
+    this.form.get('room').valueChanges.pipe(takeWhile(() => this._alive)).subscribe(val => {
+      const str = val.toLowerCase().split(' ').join('');
+      this.filteredRooms = this._rooms.filter(a => a.room.toLowerCase().includes(str));
+      console.log(this.filteredRooms);
+    });
   }
 
   search() {
