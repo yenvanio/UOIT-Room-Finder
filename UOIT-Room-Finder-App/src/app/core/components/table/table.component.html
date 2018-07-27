@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-card class="tableCard" [style.height]="getHeight()">
+    <mat-card class="tableCard" [style.height]="getHeight()" [style.width.%]="getWidthPercent()">
 
       <div *ngIf="data.refresh">
           <button mat-button class="refreshButton"> 

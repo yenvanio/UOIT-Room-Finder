@@ -52,51 +52,56 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
     theme: 'blue',
     headers: [
       {name: 'Monday', key: 'time', width: 200, align: 'center'},
-      {name: 'Type', key: 'type', width: 300, align: 'center'}
+      {name: 'Type', key: 'type', width: 200, align: 'center'}
     ],
     data: [],
     refresh: false,
     offsetHeight: 250,
+    widthPercent: 100
   };
   TtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
       {name: 'Tuesday', key: 'time', width: 200, align: 'center'},
-      {name: 'Type', key: 'type', width: 300, align: 'center'}
+      {name: 'Type', key: 'type', width: 200, align: 'center'}
     ],
     data: [],
     refresh: false,
-    offsetHeight: 250
+    offsetHeight: 250,
+    widthPercent: 100
   };
   WtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
       {name: 'Wednesday', key: 'time', width: 200, align: 'center'},
-      {name: 'Type', key: 'type', width: 300, align: 'center'}
+      {name: 'Type', key: 'type', width: 200, align: 'center'}
     ],
     data: [],
     refresh: false,
-    offsetHeight: 250
+    offsetHeight: 250,
+    widthPercent: 100
   };
   RtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
       {name: 'Thursday', key: 'time', width: 200, align: 'center'},
-      {name: 'Type', key: 'type', width: 300, align: 'center'}
+      {name: 'Type', key: 'type', width: 200, align: 'center'}
     ],
     data: [],
     refresh: false,
-    offsetHeight: 250
+    offsetHeight: 250,
+    widthPercent: 100
   };
   FtableRequest: TableRequest = {
     theme: 'blue',
     headers: [
       {name: 'Friday', key: 'time', width: 200, align: 'center'},
-      {name: 'Type', key: 'type', width: 300, align: 'center'}
+      {name: 'Type', key: 'type', width: 200, align: 'center'}
     ],
     data: [],
     refresh: false,
-    offsetHeight: 250
+    offsetHeight: 250,
+    widthPercent: 100
   };
 
   /**

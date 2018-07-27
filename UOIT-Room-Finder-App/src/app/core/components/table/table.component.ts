@@ -151,6 +151,13 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Determines if mat-card is 50% or 100%
+   */
+  getWidthPercent() {
+    return this.data.widthPercent;
+  }
+
+  /**
    * Gets left padding for cell.
    * @param {Data} item
    * @param {Header} header

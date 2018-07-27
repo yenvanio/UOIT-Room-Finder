@@ -21,6 +21,8 @@ export interface TableRequest {
   refresh: boolean;
   /** Alter the height based on page */
   offsetHeight: number;
+  /** Width percentage for mat-card */
+  widthPercent: number;
 }
 
 /**

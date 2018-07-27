@@ -53,7 +53,8 @@ export class FutureClassComponent implements OnInit, OnDestroy {
     ],
     data: [],
     refresh: false,
-    offsetHeight: 0
+    offsetHeight: 0,
+    widthPercent: 50
   };
 
   /**
