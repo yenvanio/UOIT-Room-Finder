@@ -16,6 +16,8 @@ import { HelpComponent } from './pages/help/help.component';
 import { FutureClassComponent } from './pages/future-class/future-class.component';
 import { FutureClassResolver } from './resolvers/future-class.resolver';
 import { RoomResolver } from './resolvers/room.resolver';
+import { environment } from '../environments/environment';
+import {HashLocationStrategy, Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,14 @@ import { RoomResolver } from './resolvers/room.resolver';
     HelpComponent
   ],
   providers: [
+    {
+      provide: LocationStrategy,
+      useClass: environment.production ? HashLocationStrategy : PathLocationStrategy
+    },
     HomeResolver,
     HomeService,
     FutureClassResolver,
-    RoomResolver
+    RoomResolver,
   ],
   imports: [
     AppRoutingModule,
