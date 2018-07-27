@@ -14,7 +14,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
  */
 router.get('/schedule', function (req, res) {
   // Get the room value 
-  var room = req.params.room || '';
+  var room = req.query.room || '';
 
   // Assemble the query data in JSON
   var queryData = {

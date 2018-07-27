@@ -14,19 +14,19 @@ router.use(bodyParser.urlencoded({ extended: true }));
  */
 router.get('/all', function (req, res) {
   // Validating Date Format
-  var date = req.params.date || moment().format("YYYY-MM-DD");
+  var date = req.query.date || moment().format("YYYY-MM-DD");
   if (!moment(date,'YYYY-MM-DD').isValid()) {
     res.statusCode = 400;
     res.json({ errors: ['Invalid Date Format! Use (YYYY-MM-DD)'] });
   }
 
   // Validating Time Format
-  var start_time = req.params.start_time || moment().format("HH:mm:ss");
-  var end_time = req.params.end_time || moment(date + ' ' + start_time).add(1, 'hours').format("HH:mm:ss");
+  var start_time = req.query.start_time || moment().format("HH:mm:ss");
+  var end_time = req.query.end_time || moment(date + ' ' + start_time).add(1, 'hours').format("HH:mm:ss");
 
   // Gathering Parameters
   var day = convertToDay(moment(date).day()); // Get day from moment
-  var building = req.params.building || '';
+  var building = req.query.building || '';
 
   // Assemble the query data in JSON
   var queryData = {
@@ -57,18 +57,18 @@ router.get('/all', function (req, res) {
  */
 router.get('/future', function (req, res) {
   // Validating Date Format
-  var date = req.params.date || moment().format("YYYY-MM-DD");
+  var date = req.query.date || moment().format("YYYY-MM-DD");
   if (!moment(date,'YYYY-MM-DD').isValid()) {
     res.statusCode = 400;
     res.json({ errors: ['Invalid Date Format! Use (YYYY-MM-DD)'] });
   }
 
   // Validating Time Format
-  var start_time = req.params.start_time || moment().format("HH:mm:ss");
+  var start_time = req.query.start_time || moment().format("HH:mm:ss");
 
   // Gathering Parameters
   var day = convertToDay(moment(date).day()); // Get day from moment
-  var room = req.params.room || '';
+  var room = req.query.room || '';
 
   // Assemble the query data in JSON
   var queryData = {
