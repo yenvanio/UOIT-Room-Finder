@@ -60,7 +60,7 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
     data: [],
     refresh: false,
     offsetHeight: 50,
-    widthPercent: 50
+    widthPercent: 100
   };
 
   /**

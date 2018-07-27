@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     data: [],
     refresh: true,
     offsetHeight: 0,
-    widthPercent: 50
+    widthPercent: 100
   };
 
   /**
