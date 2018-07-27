@@ -27,7 +27,7 @@ var config = {
       },
       //server details
       server: {
-          host:   '127.0.0.1',
+          host:   '52.90.171.9',
           port:   '3421'
       }
   }
