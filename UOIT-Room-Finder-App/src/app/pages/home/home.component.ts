@@ -148,6 +148,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       // If the count down is over, write some text
       if (distance < 0) {
           clearInterval(this.countDownTimer);
+          this._endCountDown();
           this.refreshTable();
       }
     }, 1000);
@@ -191,7 +192,12 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   goToDetails(ev: any) {
     console.log(ev);
-    this._router.navigate(['search/future', ev]);
+    const queryData = {
+      room: ev.room,
+      building: ev.building,
+      location: ev.location
+    };
+    this._router.navigate(['search/future', queryData]);
   }
 
   /**

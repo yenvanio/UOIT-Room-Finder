@@ -136,7 +136,12 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    */
   goToDetails(ev: any) {
     console.log(ev);
-    this._router.navigate(['search/future', ev]);
+    const queryData = {
+      room: ev.room,
+      building: ev.building,
+      location: ev.location
+    };
+    this._router.navigate(['search/future', queryData]);
   }
 
   /**

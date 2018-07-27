@@ -7,24 +7,13 @@
           </button>
       </div>
 
-      <table mat-table #table [dataSource]="dataSource" matSort>
+      <table mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
         <ng-container *ngFor="let header of data.headers" [matColumnDef]="header.key">
-          <div [ngSwitch]="getSortable(data.sortable, header)">
-            
-            <div *ngSwitchCase="true">
-              <td mat-header-cell *matHeaderCellDef [style.justify-content]="getHeaderAlignment(header)" 
-                  [style.width]="getWidth(header)"mat-sort-header>
-                {{ header.name }}
-              </td>
-            </div>
 
-            <div *ngSwitchDefault>
-              <td mat-header-cell *matHeaderCellDef [style.text-align]="getHeaderAlignment(header)" 
-                  [style.width]="getWidth(header)">
-                {{ header.name }}
-              </td>
-            </div>
-          </div>
+          <td mat-header-cell *matHeaderCellDef [style.justify-content]="getHeaderAlignment(header)" 
+            [style.width]="getWidth(header)" mat-sort-header>
+            {{ header.name }}
+          </td>
   
           <td mat-cell *matCellDef="let item; let rIndex = index" [style.width]="getWidth(header)" 
               [matTooltip]="getSpecialTooltip(item, header.key)" matTooltipPosition="after"

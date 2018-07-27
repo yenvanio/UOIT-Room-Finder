@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
-import {AllData, Data, Header, TableRequest} from '../../models/table-request';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import {Data, Header, TableRequest} from '../../models/table-request';
+import {MatSort, MatTableDataSource, Sort} from '@angular/material';
 
 @Component({
   selector: 'app-table',
@@ -54,6 +54,11 @@ export class TableComponent implements OnInit, OnChanges {
    * @type {MatTableDataSource<any>}
    */
   dataSource: MatTableDataSource<any>;
+
+  /**
+   * Sorted Data
+   */
+  sortedData;
 
   height = 600;
 
@@ -217,18 +222,24 @@ export class TableComponent implements OnInit, OnChanges {
     return item[header.key] === header.image.trueValue ? header.image.trueImageRef : header.image.falseImageRef;
   }
 
-  /**
-   * Checks if a column is sortable.
-   * @param {boolean} globalSort
-   * @param {Header} header
-   * @returns {boolean}
-   */
-  getSortable(globalSort: boolean, header: Header) {
-    if (header.key === '_spacer') {
-      return false;
+  sortData(sort: Sort) {
+    const data = this.data.data.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = data;
+      return;
     }
 
-    return globalSort || header.sortable;
+    this.sortedData = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'room': return compare(a.room, b.room, isAsc);
+        case 'building': return compare(a.building, b.building, isAsc);
+        default: return 0;
+      }
+    });
+
+    this.dataSource.data = this.sortedData;
+
   }
 
   /**
@@ -252,5 +263,9 @@ export class TableComponent implements OnInit, OnChanges {
   /** Returns custom table height. */
   getHeight() { return this.data.offsetHeight ? (this.height - this.data.offsetHeight) + 'px' : this.height + 'px'; }
 
+}
+
+function compare(a, b, isAsc) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
 

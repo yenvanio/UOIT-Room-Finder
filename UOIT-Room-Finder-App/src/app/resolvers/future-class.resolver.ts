@@ -25,8 +25,7 @@ export class FutureClassResolver implements Resolve<Observable<Class[]>> {
   resolve(route: ActivatedRouteSnapshot) {
     const room = route.paramMap.get('room');
     const date = route.paramMap.get('date') || moment().format('YYYY-MM-DD');
-    // const start_time = route.paramMap.get('start_time') || moment().format('HH:mm:ss');
-    const start_time = '9:00:00';
+    const start_time = route.paramMap.get('start_time') || moment().format('HH:mm:ss');
     return this._hService.getFutureClasses(room, date, start_time);
   }
 }
