@@ -65,8 +65,6 @@ export class HeaderComponent implements OnInit {
       this.goToTime();
     } else if (type === 'room') {
       this.goToRoom();
-    } else if (type === 'building') {
-      this.goToBuilding();
     } else if (type === 'help') {
       this.goToHelp();
     }
@@ -76,27 +74,22 @@ export class HeaderComponent implements OnInit {
    */
 
   goToHome() {
-    this._router.navigate(['/app/home']);
+    this._router.navigate(['']);
   }
 
   /** Search By Time */
   goToTime() {
-    this._router.navigate(['/app/search/time']);
+    this._router.navigate(['search/time']);
   }
 
   /** Search By Room */
   goToRoom() {
-    this._router.navigate(['/app/search/room']);
-  }
-
-  /** Search By Building */
-  goToBuilding() {
-    this._router.navigate(['/app/search/building']);
+    this._router.navigate(['search/room']);
   }
 
   /** Go to Help Page */
   goToHelp() {
-    this._router.navigate(['/app/help']);
+    this._router.navigate(['help']);
   }
 
 }

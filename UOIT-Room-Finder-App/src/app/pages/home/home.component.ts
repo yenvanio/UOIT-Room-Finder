@@ -191,14 +191,14 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   goToDetails(ev: any) {
     console.log(ev);
-    this._router.navigate(['/app/search/future', ev]);
+    this._router.navigate(['search/future', ev]);
   }
 
   /**
    * Navigate back to summary
    */
   goBack() {
-    this._router.navigate(['/app/home']);
+    this._router.navigate(['']);
   }
 
 }

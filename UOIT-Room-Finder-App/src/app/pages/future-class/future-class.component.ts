@@ -123,7 +123,7 @@ export class FutureClassComponent implements OnInit, OnDestroy {
    * Navigate back to summary
    */
   goBack() {
-    this._router.navigate(['/app/home']);
+    this._router.navigate(['']);
   }
 
 }

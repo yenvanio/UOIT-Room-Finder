@@ -136,7 +136,7 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    */
   goToDetails(ev: any) {
     console.log(ev);
-    this._router.navigate(['/app/search/future', ev]);
+    this._router.navigate(['search/future', ev]);
   }
 
   /**
@@ -152,7 +152,7 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    * Navigate back to summary
    */
   goBack() {
-    this._router.navigate(['/app/home']);
+    this._router.navigate(['']);
   }
 
   /**
