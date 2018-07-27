@@ -1,5 +1,5 @@
 /** Base API URL */
-export const DEV_API_URL = 'http://localhost:10010/api';
+// export const DEV_API_URL = 'http://localhost:10010/api';
 export const PROD_API_URL = 'http://uoit.yshiv.com:10010/api';
 
 /** Debounce time. Time to wait before running async validators on input. */

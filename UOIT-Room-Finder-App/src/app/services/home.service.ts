@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {PROD_API_URL, DEV_API_URL} from '../core/constants';
+import {PROD_API_URL} from '../core/constants';
 import { Class } from '../models/class';
 import { Room } from '../models/room';
 
