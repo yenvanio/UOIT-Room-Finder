@@ -13,7 +13,7 @@ export class HomeService {
    * @type {HttpHeaders}
    * @private
    */
-  private _headers = new HttpHeaders().set('Access-Control-Allow-Headers', 'Content-Type');
+  // private _headers = new HttpHeaders().set('Access-Control-Allow-Headers', 'Content-Type');
 
   /**
    * Constructor
@@ -33,11 +33,11 @@ export class HomeService {
     if (end_time) {
       apiURL += `&end_time=${end_time}`;
     }
-    return this._http.get<Class[]>(apiURL, {headers: this._headers});
+    return this._http.get<Class[]>(apiURL);
   }
 
   getWithoutParam(): Observable<Class[]> {
-    return this._http.get<Class[]>(`${API_URL}/class/all`, {headers: this._headers});
+    return this._http.get<Class[]>(`${API_URL}/class/all`);
   }
 
   getRoomSchedule(room: String): Observable<Class[]> {
@@ -45,7 +45,7 @@ export class HomeService {
     if (room) {
       apiURL += `?room=${room}`;
     }
-    return this._http.get<Class[]>(apiURL, {headers: this._headers});
+    return this._http.get<Class[]>(apiURL);
   }
 
   getFutureClasses(room: String, date: String, start_time: String): Observable<Class[]> {
@@ -59,12 +59,12 @@ export class HomeService {
     if (start_time) {
       apiURL += `&start_time=${start_time}`;
     }
-    return this._http.get<Class[]>(apiURL, {headers: this._headers});
+    return this._http.get<Class[]>(apiURL);
   }
 
   getRooms() {
     const apiURL = `${API_URL}/room/all`;
-    return this._http.get<Room[]>(apiURL, {headers: this._headers});
+    return this._http.get<Room[]>(apiURL);
   }
 
 }
