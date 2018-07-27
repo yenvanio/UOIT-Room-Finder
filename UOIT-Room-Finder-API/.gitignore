@@ -5,9 +5,9 @@
 
 # compiled output
 # /dist
-/dist-server
-/tmp
-/out-tsc
+# /dist-server
+# /tmp
+# /out-tsc
 
 # dependencies
 node_modules/
