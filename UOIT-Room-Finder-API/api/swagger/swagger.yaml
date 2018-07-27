@@ -3,7 +3,7 @@ info:
   version: "0.0.1"
   title: UOIT Room Finder API
 # during dev, should point to your local machine
-host: 52.90.171.9:10010
+host: uoit.yshiv.com
 # basePath prefixes all resource paths 
 basePath: /api
 # 
