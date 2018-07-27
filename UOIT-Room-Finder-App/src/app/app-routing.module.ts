@@ -13,37 +13,32 @@ import { RoomResolver } from './resolvers/room.resolver';
 
 const appRoutes: Routes = [
   {
-    path: 'app',
-    redirectTo: 'app/home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'app/home',
+    path: '/',
     component: HomeComponent,
     resolve: {
       classes: HomeResolver
     }
   },
   {
-    path: 'app/search/time',
+    path: '/search/time',
     component: SearchTimeComponent,
   },
   {
-    path: 'app/search/room',
+    path: '/search/room',
     component: SearchRoomComponent,
     resolve: {
       rooms: RoomResolver
     }
   },
   {
-    path: 'app/search/future',
+    path: '/search/future',
     component: FutureClassComponent,
     resolve: {
       classes: FutureClassResolver,
     }
   },
   {
-    path: 'app/help',
+    path: '/help',
     component: HelpComponent,
   },
   {
@@ -52,7 +47,7 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'app',
+    redirectTo: '/',
     pathMatch: 'full'
   },
   {
