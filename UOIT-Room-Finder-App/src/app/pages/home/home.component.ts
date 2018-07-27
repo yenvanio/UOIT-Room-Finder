@@ -131,32 +131,34 @@ export class HomeComponent implements OnInit, OnDestroy {
   private _startCountDown() {
     // Set the date we're counting down to
     const date = moment().format('YYYY-MM-DD');
-    const start_time = moment().format('HH:mm:ss');
-    const countDownDate = moment(date + ' ' + start_time).add(1, 'hours').valueOf();
+    const start_time = moment().format('hh:mm A');
+    const end_time =  moment(date + ' ' + start_time).add(1, 'hours').format('hh:mm A');
+    this._countDownTimerText = 'Classes open from ' + start_time + ' - ' + end_time;
+    // const countDownDate = moment(date + ' ' + start_time).add(1, 'hours').valueOf();
 
-    // Update the count down every 1 second
-    this._countDownTimer = setInterval(function() {
-      // Get todays date and time
-      const now = moment().valueOf();
-      // Find the distance between now an the count down date
-      const distance = countDownDate - now;
-      // Time calculations for days, hours, minutes and seconds
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      // Output the result
-      document.getElementById('countdown').innerHTML = 'Classes open for: ' + minutes + 'min ' + seconds + 'sec';
-      this._countDownTimerText = 'Classes open for: ' + minutes + 'min ' + seconds + 'sec';
-      // If the count down is over, write some text
-      if (distance < 0) {
-          clearInterval(this.countDownTimer);
-          this._endCountDown();
-          this.refreshTable();
-      }
-    }, 1000);
+    // // Update the count down every 1 second
+    // this._countDownTimer = setInterval(function() {
+    //   // Get todays date and time
+    //   const now = moment().valueOf();
+    //   // Find the distance between now an the count down date
+    //   const distance = countDownDate - now;
+    //   // Time calculations for days, hours, minutes and seconds
+    //   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    //   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    //   // Output the result
+    //   document.getElementById('countdown').innerHTML = 'Classes open for: ' + minutes + 'min ' + seconds + 'sec';
+    //   this._countDownTimerText = 'Classes open for: ' + minutes + 'min ' + seconds + 'sec';
+    //   // If the count down is over, write some text
+    //   if (distance < 0) {
+    //       clearInterval(this.countDownTimer);
+    //       this._endCountDown();
+    //       this.refreshTable();
+    //   }
+    // }, 1000);
   }
 
   private _endCountDown() {
-    document.getElementById('countdown').innerHTML = 'No Open Classrooms';
+    // document.getElementById('countdown').innerHTML = 'No Open Classrooms';
     this._countDownTimerText = 'No Open Classrooms';
   }
 
@@ -164,7 +166,7 @@ export class HomeComponent implements OnInit, OnDestroy {
    * Refresh and update table
    */
   refreshTable() {
-    clearInterval(this._countDownTimer);
+    // clearInterval(this._countDownTimer);
     this._countDownTimerText = '';
     console.log('refresh');
     this._hService.getWithoutParam().pipe(takeWhile(() => this._alive),
