@@ -143,6 +143,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
       // Output the result
+      document.getElementById('countdown').innerHTML = 'Classes open for: ' + minutes + 'min ' + seconds + 'sec';
       this._countDownTimerText = 'Classes open for: ' + minutes + 'min ' + seconds + 'sec';
       // If the count down is over, write some text
       if (distance < 0) {

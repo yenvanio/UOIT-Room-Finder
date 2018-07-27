@@ -2,7 +2,9 @@
     <mat-card class="tableCard" [style.height]="getHeight(data.offsetHeight)">
       
       <div *ngIf="data.refresh">
-        <i class="material-icons refreshIcon" (click)="refreshClick()" matTooltip="Refresh">refresh</i>
+          <button mat-button class="refreshButton"> 
+              <i class="material-icons blueTint md-36" (click)="refreshClick()" matTooltip="Refresh">refresh</i>
+          </button>
       </div>
 
       <table mat-table #table [dataSource]="dataSource" matSort>
@@ -35,7 +37,7 @@
 
               <div *ngSwitchCase="'icon'">
                 <i *ngIf="item.isLab == true" matTooltip="{{header.icon.title}}" class="{{header.icon.class}} yellowTint md-24">
-                  {{ header.icon.icon }}
+                      {{ header.icon.icon }}
                 </i>
               </div>
 

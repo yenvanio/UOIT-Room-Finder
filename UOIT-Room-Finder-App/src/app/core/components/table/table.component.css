@@ -101,6 +101,11 @@ td.mat-cell {
   font-size: 30px;
 }
 
+.refreshButton {
+  float: right;
+  border:none;
+}
+
 ::ng-deep .mat-sort-header-container {
   justify-content: inherit !important;
 }
