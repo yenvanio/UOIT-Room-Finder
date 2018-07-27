@@ -88,9 +88,7 @@ export class TableComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     // Checks if update is incremented, which means the data has been updated
     if (changes.update && !changes.update.firstChange) {
-      console.log('changed');
       this.dataSource.data = this.data.data;
-      console.log(this.data.data);
     }
   }
 

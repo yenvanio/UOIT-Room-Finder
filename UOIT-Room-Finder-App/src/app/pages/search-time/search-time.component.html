@@ -5,7 +5,7 @@
 
   <div class="date">
     <mat-form-field>
-        <input matInput formControlName="date" [placeholder]="Date" type="text"
+        <input matInput formControlName="date" type="text"
               (focus)="dateDP.open()" [matDatepicker]="dateDP">
         <span matPrefix class="blueTint">Date:&nbsp;</span>
         <mat-error>{{getError('date')}}</mat-error>
@@ -40,4 +40,4 @@
   </div>
 </div>
 
-<app-table [data]="tableRequest" [update]="update" (rowEmitter)="goToDetails($event)" (refreshEmitter)="refreshTable()"></app-table>
+<app-table [data]="tableRequest" [update]="update" (rowEmitter)="goToDetails($event)"></app-table>

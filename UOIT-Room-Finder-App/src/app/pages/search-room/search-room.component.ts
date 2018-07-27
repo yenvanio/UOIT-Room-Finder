@@ -37,7 +37,7 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
   private _alive = true;
 
   private _rooms: Room[] = [];
-  private filteredRooms: Room[] = [];
+  filteredRooms: Room[] = [];
 
   /**
    * Used to update table details structure
@@ -186,14 +186,13 @@ export class SearchRoomComponent implements OnInit, OnDestroy {
       this.update++;
     })).subscribe(
       result => {
-        console.log(result);
         this.emptyArrays();
-        result.classes.forEach(c => {
+        result['classes'].forEach(c => {
           c.time = moment(c.start_time, 'HH:mm:ss').format('hh:mm A') + ' - ' + moment(c.end_time, 'HH:mm:ss').format('hh:mm A');
           if (c.start_date !== c.end_date) {
             c.type = 'Every Week';
           } else {
-            c.type = 'Only on ' + moment(c.start_date).format('MMM Do YY')
+            c.type = 'Only on ' + moment(c.start_date).format('MMM Do YY');
           }
           if (c.day === 'M') {
             this._Mclasses.push(c);

@@ -24,7 +24,7 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    */
   private _classes: Class[] = [];
 
-  private timeSelect = TIME_DROPDOWN;
+  timeSelect = TIME_DROPDOWN;
 
   /**
    * Used to hold location change subscription
@@ -121,12 +121,12 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
       this.update++;
     })).subscribe(
       result => {
-        result.classes.forEach(c => {
+        result['classes'].forEach(c => {
           if (c.type === 'Laboratory') {
             c.isLab = true;
           }
         });
-        this._classes = result.classes;
+        this._classes = result['classes'];
       });
   }
 
@@ -136,6 +136,7 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    */
   goToDetails(ev: any) {
     console.log(ev);
+    this._router.navigate(['/app/search/future', ev]);
   }
 
   /**
@@ -160,8 +161,6 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
    */
   get cantSearch() {
     const date = moment().format('YYYY-MM-DD');
-    console.log(moment(date + ' ' + this.form.get('start_time').value));
-    console.log(moment(date + ' ' + this.form.get('end_time').value));
     return this.form.invalid ||
       Date.parse('01/01/2011 ' + this.form.get('start_time').value) >= Date.parse('01/01/2011 ' + this.form.get('end_time').value);
   }

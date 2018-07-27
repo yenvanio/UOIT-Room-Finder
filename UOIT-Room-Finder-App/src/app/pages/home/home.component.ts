@@ -172,12 +172,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.update++;
     })).subscribe(
       result => {
-        result.classes.forEach(c => {
+        result['classes'].forEach(c => {
           if (c.type === 'Laboratory') {
             c.isLab = true;
           }
         });
-        this._classes = result.classes;
+        this._classes = result['classes'];
       });
     if (this._classes.length > 0) {
       this._startCountDown();

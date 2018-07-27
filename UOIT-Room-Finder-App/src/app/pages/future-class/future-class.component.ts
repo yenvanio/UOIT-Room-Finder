@@ -4,6 +4,7 @@ import { HomeService } from '../../services/home.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoreService } from '../../core/services/core.service';
 import { Class } from '../../models/class';
+import { Room } from '../../models/room';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { Location } from '@angular/common';
 import * as moment from 'moment';
@@ -30,7 +31,7 @@ export class FutureClassComponent implements OnInit, OnDestroy {
   /** To unsubscribe from observables. */
   private _alive = true;
 
-  private _room;
+  _room: String;
 
   /**
    * Used to update table details structure

@@ -24,8 +24,7 @@ import {
   MatSortModule,
   MatTableModule,
   MatTabsModule,
-  MatTooltipModule,
-  MatSpinner,
+  MatTooltipModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -66,13 +65,11 @@ import { CoreService } from './services/core.service';
   ],
   declarations: [
     HeaderComponent,
-    TableComponent,
-    MatSpinner
+    TableComponent
   ],
   exports: [
     HeaderComponent,
     TableComponent,
-    MatSpinner,
 
     FormsModule,
     ReactiveFormsModule,
