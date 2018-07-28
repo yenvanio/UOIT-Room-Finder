@@ -30,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/header/header.component';
 import { TableComponent } from './components/table/table.component';
+import { TableSmallComponent } from './components/table-small/table-small.component';
 import { CoreService } from './services/core.service';
 
 
@@ -65,11 +66,13 @@ import { CoreService } from './services/core.service';
   ],
   declarations: [
     HeaderComponent,
-    TableComponent
+    TableComponent,
+    TableSmallComponent
   ],
   exports: [
     HeaderComponent,
     TableComponent,
+    TableSmallComponent,
 
     FormsModule,
     ReactiveFormsModule,

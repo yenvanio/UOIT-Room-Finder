@@ -1,0 +1,46 @@
+<div class="container">
+    <mat-card class="tableCard" [style.height]="getHeight()" [style.width.%]="getWidthPercent()">
+
+      <div *ngIf="data.refresh">
+          <button mat-button class="refreshButton"> 
+              <i class="material-icons blueTint md-36" (click)="refreshClick()" matTooltip="Refresh">refresh</i>
+          </button>
+      </div>
+
+      <table mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+        <ng-container *ngFor="let header of data.headers" [matColumnDef]="header.key">
+
+            <td mat-header-cell *matHeaderCellDef [style.justify-content]="getHeaderAlignment(header)" 
+              [style.width]="getWidth(header)" mat-sort-header>
+              {{ header.name }}
+            </td>
+  
+            <td mat-cell *matCellDef="let item; let rIndex = index" [style.width]="getWidth(header)" 
+                [matTooltip]="getSpecialTooltip(item, header.key)" matTooltipPosition="after"
+                [style.text-align]="getAlign(header)" [style.color]="item.color">
+                  
+                <div [ngSwitch]="getType(header)">
+                  <div *ngSwitchCase="'none'">
+                    <span [title]="getTitle(item, header.key)"
+                          [style.width]="getWidthWithPadding(item, header)" [style.color]="getColor(item, header)"
+                          [style.padding-left]="getPadding(item, header)" [style.font-weight]="getFontWeight(item, header)">
+                      {{ item[header.key] }}
+                    </span>
+                  </div>
+
+                  <div *ngSwitchCase="'icon'">
+                    <i *ngIf="item.isLab == true" matTooltip="{{header.icon.title}}" class="{{header.icon.class}} yellowTint md-24">
+                      {{ header.icon.icon }}
+                    </i>
+                  </div>
+              </div>
+            </td>
+  
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="headers" [ngClass]="'header-' + data.theme"></tr>
+        <tr mat-row *matRowDef="let row; columns: headers;" [ngClass]="'row-' + data.theme + ' ' + markOnClick(row)" (click)="rowClick(row)"></tr>
+        
+      </table>
+    </mat-card>
+  </div>
