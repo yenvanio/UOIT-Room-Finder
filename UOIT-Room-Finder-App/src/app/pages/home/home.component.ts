@@ -133,7 +133,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const date = moment().format('YYYY-MM-DD');
     const start_time = moment().format('hh:mm A');
     const end_time =  moment(date + ' ' + start_time).add(1, 'hours').format('hh:mm A');
-    this._countDownTimerText = 'Classes open from ' + start_time + ' - ' + end_time;
+    this._countDownTimerText = 'Rooms open from ' + start_time + ' - ' + end_time;
     // const countDownDate = moment(date + ' ' + start_time).add(1, 'hours').valueOf();
 
     // // Update the count down every 1 second
@@ -146,8 +146,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     //   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     //   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     //   // Output the result
-    //   document.getElementById('countdown').innerHTML = 'Classes open for: ' + minutes + 'min ' + seconds + 'sec';
-    //   this._countDownTimerText = 'Classes open for: ' + minutes + 'min ' + seconds + 'sec';
+    //   document.getElementById('countdown').innerHTML = 'Rooms open for: ' + minutes + 'min ' + seconds + 'sec';
+    //   this._countDownTimerText = 'Rooms open for: ' + minutes + 'min ' + seconds + 'sec';
     //   // If the count down is over, write some text
     //   if (distance < 0) {
     //       clearInterval(this.countDownTimer);
@@ -159,7 +159,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private _endCountDown() {
     // document.getElementById('countdown').innerHTML = 'No Open Classrooms';
-    this._countDownTimerText = 'No Open Classrooms';
+    this._countDownTimerText = 'No Open Rooms';
   }
 
   /**
