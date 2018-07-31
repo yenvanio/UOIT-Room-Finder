@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     headers: [
       {name: 'Room', key: 'room', width: 200, align: 'center'},
       {name: 'Building', key: 'building', width: 300, align: 'center'},
-      {name: '', key: 'isLab', width: 50, align: 'left',
+      {name: '', key: 'lab', width: 50, align: 'left',
         icon: {
           title: 'Lab Room: Might be Locked!',
           class: 'material-icons',
@@ -91,8 +91,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this._startCountDown();
       /* Classes */
       routeData.classes.classes.forEach(c => {
-        if (c.type === 'Laboratory') {
-          c.isLab = true;
+        if (c.isLab === 'Laboratory') {
+          c.lab = true;
         }
         this._classes.push(c);
       });
@@ -134,31 +134,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     const start_time = moment().format('hh:mm A');
     const end_time =  moment(date + ' ' + start_time).add(1, 'hours').format('hh:mm A');
     this._countDownTimerText = 'Rooms open from ' + start_time + ' - ' + end_time;
-    // const countDownDate = moment(date + ' ' + start_time).add(1, 'hours').valueOf();
-
-    // // Update the count down every 1 second
-    // this._countDownTimer = setInterval(function() {
-    //   // Get todays date and time
-    //   const now = moment().valueOf();
-    //   // Find the distance between now an the count down date
-    //   const distance = countDownDate - now;
-    //   // Time calculations for days, hours, minutes and seconds
-    //   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    //   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    //   // Output the result
-    //   document.getElementById('countdown').innerHTML = 'Rooms open for: ' + minutes + 'min ' + seconds + 'sec';
-    //   this._countDownTimerText = 'Rooms open for: ' + minutes + 'min ' + seconds + 'sec';
-    //   // If the count down is over, write some text
-    //   if (distance < 0) {
-    //       clearInterval(this.countDownTimer);
-    //       this._endCountDown();
-    //       this.refreshTable();
-    //   }
-    // }, 1000);
   }
 
   private _endCountDown() {
-    // document.getElementById('countdown').innerHTML = 'No Open Classrooms';
     this._countDownTimerText = 'No Open Rooms';
   }
 
@@ -166,7 +144,6 @@ export class HomeComponent implements OnInit, OnDestroy {
    * Refresh and update table
    */
   refreshTable() {
-    // clearInterval(this._countDownTimer);
     this._countDownTimerText = '';
     console.log('refresh');
     this._hService.getWithoutParam().pipe(takeWhile(() => this._alive),
@@ -177,8 +154,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     })).subscribe(
       result => {
         result['classes'].forEach(c => {
-          if (c.type === 'Laboratory') {
-            c.isLab = true;
+          if (c.isLab === 'Laboratory') {
+            c.lab = true;
           }
         });
         this._classes = result['classes'];

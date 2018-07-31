@@ -1,6 +1,6 @@
 /** Base API URL */
-// export const API_URL = 'http://localhost:3000/api';
-export const API_URL = 'http://uoit.yshiv.com:3000/api';
+export const API_URL = 'http://localhost:3000/api';
+// export const API_URL = 'http://uoit.yshiv.com:3000/api';
 
 /** Debounce time. Time to wait before running async validators on input. */
 export const DEBOUNCE_TIME = 200;

@@ -48,7 +48,7 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
     headers: [
       {name: 'Room', key: 'room', width: 200, align: 'center'},
       {name: 'Building', key: 'building', width: 300, align: 'center'},
-      {name: '', key: 'isLab', width: 50, align: 'left',
+      {name: '', key: 'lab', width: 50, align: 'left',
         icon: {
           title: 'Lab Room: Might be Locked!',
           class: 'material-icons',
@@ -123,8 +123,8 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
     })).subscribe(
       result => {
         result['classes'].forEach(c => {
-          if (c.type === 'Laboratory') {
-            c.isLab = true;
+          if (c.isLab === 'Laboratory') {
+            c.lab = true;
           }
         });
         this._classes = result['classes'];
