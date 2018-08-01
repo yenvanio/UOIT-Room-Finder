@@ -10,6 +10,7 @@ import { SearchRoomComponent } from './pages/search-room/search-room.component';
 import { HelpComponent } from './pages/help/help.component';
 import { FutureClassComponent } from './pages/future-class/future-class.component';
 import { RoomResolver } from './resolvers/room.resolver';
+import { MapResolver } from './resolvers/map.resolver';
 
 const appRoutes: Routes = [
   {
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
     component: FutureClassComponent,
     resolve: {
       classes: FutureClassResolver,
+      map: MapResolver
     }
   },
   {

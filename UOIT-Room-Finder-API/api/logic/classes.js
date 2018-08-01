@@ -15,7 +15,7 @@ var db = require('../../config/db');
   */
   getClassesByParam = function (data, callback) {
       var sql = `
-      SELECT DISTINCT(class.room) , building.name AS building, building.location, course.isLab FROM class 
+      SELECT DISTINCT(class.room), building.name AS building, building.location, course.isLab FROM class 
           LEFT JOIN course ON class.fk_course_crn = course.crn
           LEFT JOIN building ON class.fk_building_id = building.id
               WHERE class.day = '${data.day}'

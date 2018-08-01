@@ -4,11 +4,12 @@ import { HomeService } from '../../services/home.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoreService } from '../../core/services/core.service';
 import { Class } from '../../models/class';
-import { Room } from '../../models/room';
+import { Room, MapLocation } from '../../models/room';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { Location } from '@angular/common';
 import * as moment from 'moment';
 import { finalize, takeWhile } from 'rxjs/operators';
+import {} from '@types/googlemaps';
 
 @Component({
   selector: 'app-future-class',
@@ -21,9 +22,10 @@ export class FutureClassComponent implements OnInit, OnDestroy {
    * Classes
    * @type {Class[]}
    */
-  private _classes: Class[] = [];
+  _classes: Class[] = [];
 
-  map;
+  google: any;
+  map: any;
 
   /**
    * Used to hold location change subscription
@@ -33,7 +35,9 @@ export class FutureClassComponent implements OnInit, OnDestroy {
   /** To unsubscribe from observables. */
   private _alive = true;
 
-  _room: String;
+  _room = new Room();
+
+  _headerText: String;
 
   /**
    * Used to update table details structure
@@ -53,7 +57,7 @@ export class FutureClassComponent implements OnInit, OnDestroy {
     ],
     data: [],
     refresh: false,
-    offsetHeight: 0,
+    offsetHeight: 200,
     widthPercent: 50
   };
 
@@ -73,8 +77,8 @@ export class FutureClassComponent implements OnInit, OnDestroy {
     private _location: Location) {
     // Checking to see if resolver delivered data correctly
     const routeData = this._route.snapshot.data;
-    if (!routeData.classes) {
-      this._cService.error('500', 'Classes could not be retrieved');
+    if (!routeData.classes || !routeData.map) {
+      this._cService.error('500', 'Data could not be retrieved');
     }
   }
 
@@ -82,17 +86,14 @@ export class FutureClassComponent implements OnInit, OnDestroy {
     const routeData = this._route.snapshot.data;
     console.log(routeData);
 
+    this._room = routeData.map.details[0];
+
     /* Classes */
     if (routeData.classes.classes.length > 0) {
       routeData.classes.classes.forEach(c => {
         c.duration = moment(c.start_time, 'HH:mm:ss').format('hh:mm A') + ' - ' + moment(c.end_time, 'HH:mm:ss').format('hh:mm A');
         this._classes.push(c);
       });
-    }
-    if (this._classes.length > 0) {
-      this._room = 'Classes coming up for  ' + this._classes[0].room;
-    } else {
-      this._room = 'No more classes coming up';
     }
 
     console.log(this._room);
@@ -110,17 +111,33 @@ export class FutureClassComponent implements OnInit, OnDestroy {
    */
   private _buildPage(routeData: any) {
     // Add Code
+    this.getLocations();
     this.initMap();
   }
 
+  getLocations() {
+    const loc_arr = this._room.location.split(';');
+    const locations: MapLocation[] = [];
+    loc_arr.forEach(l => {
+      const latlng_arr = l.split(',');
+      const loc = new MapLocation();
+      loc.lat = parseFloat(latlng_arr[0]);
+      loc.lng = parseFloat(latlng_arr[1]);
+      locations.push(loc);
+    });
+    this._room.locations = locations;
+  }
+
   initMap() {
-  //     // The location of Uluru
-  // const location = {lat: -25.344, lng: 131.036};
-  // // The map, centered at Uluru
-  // const map = new google.maps.Map(
-  //     document.getElementById('map'), {zoom: 4, center: uluru});
-  // // The marker, positioned at Uluru
-  // const marker = new google.maps.Marker({position: uluru, map: map});
+    // The location of building
+    this._room.locations.forEach(l => {
+      const location = {lat: l.lat, lng: l.lng};
+      // The map, centered at Uluru
+      const map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 17, center: location});
+      // The marker, positioned at Uluru
+      const marker = new google.maps.Marker({position: location, map: map, title: this._room.building + ': ' + this._room.room});
+    });
   }
 
     /**

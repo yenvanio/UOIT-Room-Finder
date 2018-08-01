@@ -67,4 +67,9 @@ export class HomeService {
     return this._http.get<Room[]>(apiURL);
   }
 
+  getMapDetails(room: String) {
+    const apiURL = `${API_URL}/room/${room}`;
+    return this._http.get<Room[]>(apiURL);
+  }
+
 }

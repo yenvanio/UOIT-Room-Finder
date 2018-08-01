@@ -53,5 +53,31 @@ router.get('/all', function (req, res) {
   });  
 });
 
+/**
+ * Get a list of all the rooms
+ * @param {Any} req 
+ * @param {Any} res 
+ */
+router.get('/:id', function (req, res) {
+  // Get the room value 
+  var room = req.params.id || '';
+
+  // Assemble the query data in JSON
+  var queryData = {
+    room: room
+  }  
+  // Retrieve data from the Database
+  logic.getRoom(queryData, function (err, queryResult) {
+    console.log(queryResult);
+    if (err) {
+      res.statusCode = 500;
+      res.json({ errors: ['Unable to retrieve room!'] });
+    } else {
+      res.statusCode = 200;
+      res.json({ details: queryResult });
+    }
+  });  
+});
+
 // Add functions for classes module to export
 module.exports = router;

@@ -174,8 +174,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     console.log(ev);
     const queryData = {
       room: ev.room,
-      building: ev.building,
-      start_time: ev.location
     };
     this._router.navigate(['search/future', queryData]);
   }

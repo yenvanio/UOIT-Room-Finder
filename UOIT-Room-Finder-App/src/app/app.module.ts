@@ -17,6 +17,7 @@ import { FutureClassComponent } from './pages/future-class/future-class.componen
 import { FutureClassResolver } from './resolvers/future-class.resolver';
 import { RoomResolver } from './resolvers/room.resolver';
 import { environment } from '../environments/environment';
+import { MapResolver } from './resolvers/map.resolver';
 import {HashLocationStrategy, Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @NgModule({
@@ -38,6 +39,7 @@ import {HashLocationStrategy, Location, LocationStrategy, PathLocationStrategy} 
     HomeService,
     FutureClassResolver,
     RoomResolver,
+    MapResolver
   ],
   imports: [
     AppRoutingModule,

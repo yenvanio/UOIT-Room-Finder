@@ -144,8 +144,6 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
     console.log(ev);
     const queryData = {
       room: ev.room,
-      building: ev.building,
-      location: ev.location,
       start_time: this.form.get('start_time').value,
       date: this.form.get('date').value.format('YYYY-MM-DD')
     };

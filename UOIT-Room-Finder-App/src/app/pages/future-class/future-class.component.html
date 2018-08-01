@@ -1,10 +1,15 @@
 <app-header></app-header>
 
 <div class="spacerDiv">
-    <mat-card id="room"> <span>{{ this._room }} </span></mat-card>
+    <mat-card id="room"> 
+        <span *ngIf="this._classes.length > 0"> Classes coming up in </span>
+        <span *ngIf="this._classes.length <= 0"> No more Classes in </span>
+        <span>{{ this._room.room }} </span>
+    </mat-card>
 </div>
 <div class="miniSpacerDiv"></div>
 
 <app-table [data]="tableRequest" [update]="update"></app-table>
+<div class="miniSpacerDiv"></div>
 
-<div id="map"></div>
+<div id="map" style="width:100%;height:300px;"></div>
