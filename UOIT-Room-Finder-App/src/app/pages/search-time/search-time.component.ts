@@ -10,7 +10,7 @@ import * as moment from 'moment';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CustomValidators } from '../../core/validators';
 import { finalize, takeWhile } from 'rxjs/operators';
-import {TIME_DROPDOWN} from '../../core/constants';
+import { TIME_DROPDOWN } from '../../core/constants';
 
 @Component({
   selector: 'app-search-time',
@@ -113,8 +113,13 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
 
   search() {
     const date = this.form.get('date').value.format('YYYY-MM-DD') || moment().format('YYYY-MM-DD');
+
     const start_time = this.form.get('start_time').value || moment().format('HH:mm:ss');
+    this.form.get('start_time').patchValue(start_time);
+
     const end_time = this.form.get('end_time').value || moment(date + ' ' + start_time).add(1, 'hours').format('HH:mm:ss');
+    this.form.get('end_time').setValue(end_time);
+
     this._hService.getByParam(date, start_time, end_time).pipe(takeWhile(() => this._alive),
     finalize(() => {
       console.log(this._classes);
@@ -140,8 +145,11 @@ export class SearchTimeComponent implements OnInit, OnDestroy {
     const queryData = {
       room: ev.room,
       building: ev.building,
-      location: ev.location
+      location: ev.location,
+      start_time: this.form.get('start_time').value,
+      date: this.form.get('date').value.format('YYYY-MM-DD')
     };
+    console.log(queryData);
     this._router.navigate(['search/future', queryData]);
   }
 
