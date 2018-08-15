@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:padding="10dp"
-        android:scrollbars="vertical"
+        android:scrollbars="none"
         android:layout_marginBottom="?attr/actionBarSize"
         android:layout_marginTop="?attr/actionBarSize" />
 
