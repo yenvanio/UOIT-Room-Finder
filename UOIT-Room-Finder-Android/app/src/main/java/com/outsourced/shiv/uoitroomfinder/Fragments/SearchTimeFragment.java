@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -80,6 +81,7 @@ public class SearchTimeFragment extends Fragment {
 
         expListView = (ExpandableListView) view.findViewById(R.id.expLV);
         expListView.setFocusable(false);
+        expListView.setNestedScrollingEnabled(true);
         ribbonTitle = (TextView) view.findViewById(R.id.ribbon_title);
 
         metrics = new DisplayMetrics();

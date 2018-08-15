@@ -17,4 +17,7 @@ public interface DataService {
     Call<ClassResult> getClassesByParam(@Query("date") String date,
                                         @Query("start_time") String start_time, @Query("end_time") String end_time);
 
+    @GET("room/all")
+    Call<RoomResult> getAllRooms();
+
 }
