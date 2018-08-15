@@ -229,6 +229,7 @@ public class SearchTimeFragment extends Fragment {
         updateStartTimeLabel(start_time_cal.get(Calendar.HOUR_OF_DAY), start_time_cal.get(Calendar.MINUTE));
         end_time_cal.add(Calendar.HOUR, 1);
         updateEndTimeLabel(end_time_cal.get(Calendar.HOUR_OF_DAY), end_time_cal.get(Calendar.MINUTE));
+
         return view;
     }
 
@@ -249,13 +250,15 @@ public class SearchTimeFragment extends Fragment {
             }
             listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
             expListView.setAdapter(listAdapter);
-            // TODO: Set the ribbon TextView to say "Open rooms for TimeNow - TimeNow + 1 Hour"
             ribbonTitle.setText("Rooms open from " + edit_start_time.getText().toString()
                                                    + " - " + edit_end_time.getText().toString());
         }
         else {
-            // Set the ribbon TextView to say "No Open Rooms"
             ribbonTitle.setText(R.string.no_rooms);
+            listDataChild.clear();
+            listDataHeader.clear();
+            listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
+            expListView.setAdapter(listAdapter);
         }
     }
 

@@ -23,7 +23,9 @@ import com.outsourced.shiv.uoitroomfinder.R;
 
 import com.outsourced.shiv.uoitroomfinder.Models.Class;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,6 +43,8 @@ public class HomeFragment extends Fragment {
     TextView ribbonTitle;
     Toolbar toolbar;
     SwipeRefreshLayout mSwipeRefreshLayout;
+    Calendar cal_start, cal_end;
+    String displayTime;
 
     DisplayMetrics metrics;
     int width;
@@ -130,12 +134,27 @@ public class HomeFragment extends Fragment {
             }
             listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
             expListView.setAdapter(listAdapter);
-            // TODO: Set the ribbon TextView to say "Open rooms for TimeNow - TimeNow + 1 Hour"
-            ribbonTitle.setText("Rooms open from 12:09 - 1:09");
+            // TODO: Set the ribbon TextView to say "Rooms open from TimeNow - TimeNow + 1 Hour"
+            getDisplayTime();
+            ribbonTitle.setText(displayTime);
         } else {
-            // Set the ribbon TextView to say "No Open Rooms"
             ribbonTitle.setText(R.string.no_rooms);
+            Log.d("time", displayTime+" ");
+            listDataChild.clear();
+            listDataHeader.clear();
+            listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
+            expListView.setAdapter(listAdapter);
         }
+    }
+
+    private void getDisplayTime() {
+        cal_start = Calendar.getInstance();
+        cal_end = Calendar.getInstance();
+        cal_end.add(Calendar.HOUR, 1);
+        SimpleDateFormat displayFormat = new SimpleDateFormat("hh:mm aa");
+        String start = displayFormat.format(cal_start.getTime());
+        String end = displayFormat.format(cal_end.getTime());
+        displayTime = "Rooms open from " + start + " - " + end;
     }
 
     public int GetDipsFromPixel(float pixels) {
