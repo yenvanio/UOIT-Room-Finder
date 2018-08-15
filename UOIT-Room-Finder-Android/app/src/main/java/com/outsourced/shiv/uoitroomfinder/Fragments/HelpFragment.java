@@ -3,24 +3,37 @@ package com.outsourced.shiv.uoitroomfinder.Fragments;
 import android.animation.Animator;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Movie;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.clans.fab.FloatingActionMenu;
+import com.outsourced.shiv.uoitroomfinder.Adapters.HelpAdapter;
+import com.outsourced.shiv.uoitroomfinder.Models.Help;
 import com.outsourced.shiv.uoitroomfinder.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelpFragment extends Fragment {
 
     boolean isFabOpen = false;
     Toolbar toolbar;
-    com.github.clans.fab.FloatingActionButton mail, devpage, website;
+    com.github.clans.fab.FloatingActionButton mail, devpage, website, star;
     FloatingActionMenu fam;
+
+    private List<Help> helpList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private HelpAdapter mAdapter;
 
     public static HelpFragment newInstance() {
         HelpFragment fragment = new HelpFragment();
@@ -38,28 +51,50 @@ public class HelpFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_help, container, false);
 
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.app_name);
+        toolbar.setTitle(R.string.faq_title);
 
         fam = (FloatingActionMenu) view.findViewById(R.id.fab_menu);
+
         mail = view.findViewById(R.id.fab1);
         devpage = view.findViewById(R.id.fab2);
         website = view.findViewById(R.id.fab3);
+        star = view.findViewById(R.id.fab4);
 
-        fam.setOnClickListener(new View.OnClickListener() {
+        fam.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
             @Override
-            public void onClick(View view) {
-                if (fam.isOpened()) {
-                    fam.close(true);
+            public void onMenuToggle(boolean opened) {
+                if (opened) {
+                    mail.setOnClickListener(onButtonClick());
+                    devpage.setOnClickListener(onButtonClick());
+                    website.setOnClickListener(onButtonClick());
+                    star.setOnClickListener(onButtonClick());
+                } else {
+                    mail.setOnClickListener(null);
+                    devpage.setOnClickListener(null);
+                    website.setOnClickListener(null);
+                    star.setOnClickListener(null);
                 }
             }
         });
 
-        mail.setOnClickListener(onButtonClick());
-        devpage.setOnClickListener(onButtonClick());
-        website.setOnClickListener(onButtonClick());
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv);
 
+        mAdapter = new HelpAdapter(helpList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        prepareHelpData();
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(mAdapter);
 
         return view;
+    }
+
+    private void prepareHelpData() {
+        Help faq1 = new Help(getString(R.string.does_do_title), getString(R.string.does_do));
+        helpList.add(faq1);
+        Help faq2 = new Help(getString(R.string.does_not_do_title), getString(R.string.does_not_do));
+        helpList.add(faq2);
+        Help faq3 = new Help(getString(R.string.use_title), getString(R.string.use));
+        helpList.add(faq3);
     }
 
     private View.OnClickListener onButtonClick() {
@@ -103,27 +138,24 @@ public class HelpFragment extends Fragment {
                         startActivity(new Intent(Intent.ACTION_VIEW,
                                 Uri.parse("http:yshiv.com")));
                     }
+                } else if (view == star) {
+
+                    Uri uri = Uri.parse("market://details?id=" + getActivity().getApplicationContext().getPackageName());
+                    Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                    // To count with Play market backstack, After pressing back button,
+                    // to taken back to our application, we need to add following flags to intent.
+                    goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                            Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                            Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                    try {
+                        startActivity(goToMarket);
+                    } catch (ActivityNotFoundException e) {
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getApplicationContext().getPackageName())));
+                    }
                 }
                 fam.close(true);
             }
         };
     }
-
-
 }
-
-/**
- *                     Uri uri = Uri.parse("market://details?id=" + getActivity().getApplicationContext().getPackageName());
- Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
- // To count with Play market backstack, After pressing back button,
- // to taken back to our application, we need to add following flags to intent.
- goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
- Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
- Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
- try {
- startActivity(goToMarket);
- } catch (ActivityNotFoundException e) {
- startActivity(new Intent(Intent.ACTION_VIEW,
- Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getApplicationContext().getPackageName())));
- }
- **/
