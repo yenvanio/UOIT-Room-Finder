@@ -77,6 +77,7 @@ public class SearchRoomFragment extends Fragment {
         searchFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mProgressDialog.show();
                 /* Create handle for the RetrofitInstance interface */
                 DataService service = RetrofitClient.getRetrofitInstance().create(DataService.class);
                 Call<RoomScheduleResult> call = service.getRoomSchedule(roomName);
@@ -144,6 +145,8 @@ public class SearchRoomFragment extends Fragment {
     }
 
     private void generateDataList(RoomScheduleResult rooms) {
+        listDataChild.clear();
+        listDataHeader.clear();
         if (rooms.getRoomSchedule().size() > 0) {
             List<RoomSchedule> dataSet = rooms.getRoomSchedule();
             for (RoomSchedule rs : dataSet) {
@@ -164,8 +167,6 @@ public class SearchRoomFragment extends Fragment {
         }
         else {
             ribbonTitle.setText("Room Schedule for " + roomName);
-            listDataChild.clear();
-            listDataHeader.clear();
             listAdapter = new ExpandableScheduleAdapter(getActivity(), listDataHeader, listDataChild);
             expListView.setAdapter(listAdapter);
         }

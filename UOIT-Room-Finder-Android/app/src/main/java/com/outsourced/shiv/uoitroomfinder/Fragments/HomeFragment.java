@@ -1,6 +1,7 @@
 package com.outsourced.shiv.uoitroomfinder.Fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,6 +15,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.outsourced.shiv.uoitroomfinder.Activities.FutureClassActivity;
 import com.outsourced.shiv.uoitroomfinder.Activities.MainActivity;
 import com.outsourced.shiv.uoitroomfinder.Adapters.ExpandableListAdapter;
 import com.outsourced.shiv.uoitroomfinder.Models.Class.ClassResult;
@@ -82,7 +84,24 @@ public class HomeFragment extends Fragment {
         mProgressDialog = new ProgressDialog(getActivity());
         expListView = (ExpandableListView) view.findViewById(R.id.expLV);
         ribbonTitle = (TextView) view.findViewById(R.id.ribbon_title);
-        mProgressDialog.show();
+
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+                ExpandableListAdapter eListAdapter = (ExpandableListAdapter) parent.getExpandableListAdapter();
+                Class aClass = (Class) eListAdapter.getChild(groupPosition, childPosition);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("class", aClass);
+                Intent i = new Intent(getActivity(), FutureClassActivity.class);
+                i.putExtras(bundle);
+                startActivity(i);
+
+                return true;
+            }
+        });
 
         metrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -95,6 +114,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void startService() {
+        mProgressDialog.show();
         /* Create handle for the RetrofitInstance interface */
         DataService service = RetrofitClient.getRetrofitInstance().create(DataService.class);
         Call<ClassResult> call = service.getAllClasses();
@@ -118,6 +138,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void generateDataList(ClassResult classes) {
+        listDataChild.clear();
+        listDataHeader.clear();
         if (classes.getClasses().size() > 0) {
             List<Class> dataSet = classes.getClasses();
             for (Class c : dataSet) {
@@ -139,9 +161,6 @@ public class HomeFragment extends Fragment {
             ribbonTitle.setText(displayTime);
         } else {
             ribbonTitle.setText(R.string.no_rooms);
-            Log.d("time", displayTime+" ");
-            listDataChild.clear();
-            listDataHeader.clear();
             listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
             expListView.setAdapter(listAdapter);
         }

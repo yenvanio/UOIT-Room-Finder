@@ -15,7 +15,6 @@ public class Room {
     private String building;
     @Expose
     private String location;
-    private List<Location> locations = new ArrayList<>();
 
     public Room(String room, String building, String location) {
         this.room = room;
@@ -45,19 +44,6 @@ public class Room {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    private void gatherLocations() {
-        String[] arr = this.location.split(";");
-        for (int i = 0; i < arr.length; i++) {
-            String[] loc_arr = arr[i].split(",");
-            double lat = Double.parseDouble(arr[0]);
-            double lng = Double.parseDouble(arr[1]);
-                Location loc = new Location("");
-                loc.setLatitude(lat);
-                loc.setLongitude(lng);
-            locations.add(loc);
-        }
     }
 
     public class RoomResult {

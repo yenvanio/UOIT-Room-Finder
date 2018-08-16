@@ -1,10 +1,14 @@
 package com.outsourced.shiv.uoitroomfinder.Models;
 
+import android.location.Location;
+
 import com.google.gson.annotations.Expose;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Class {
+public class Class implements Serializable {
 
     @Expose
     private String room;
@@ -18,13 +22,15 @@ public class Class {
     @Expose
     private String code;
     @Expose
-    private String course;
+    private String title;
     @Expose
     private String start_time;
     @Expose
     private String end_time;
 
     private String duration;
+    private List<Location> locations = new ArrayList<>();
+
 
     public Class(String isLab, String room, String building, String location) {
         this.isLab = isLab;
@@ -74,11 +80,11 @@ public class Class {
     }
 
     public String getCourse() {
-        return course;
+        return title;
     }
 
     public void setCourse(String course) {
-        this.course = course;
+        this.title = course;
     }
 
     public String getStart_time() {
@@ -103,6 +109,22 @@ public class Class {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
     }
 
     public class ClassResult {

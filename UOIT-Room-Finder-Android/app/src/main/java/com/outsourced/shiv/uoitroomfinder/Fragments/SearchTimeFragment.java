@@ -3,6 +3,7 @@ package com.outsourced.shiv.uoitroomfinder.Fragments;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.outsourced.shiv.uoitroomfinder.Activities.FutureClassActivity;
 import com.outsourced.shiv.uoitroomfinder.Adapters.ExpandableListAdapter;
 import com.outsourced.shiv.uoitroomfinder.Models.Class;
 import com.outsourced.shiv.uoitroomfinder.Models.Class.ClassResult;
@@ -84,6 +86,26 @@ public class SearchTimeFragment extends Fragment {
         expListView.setNestedScrollingEnabled(true);
         ribbonTitle = (TextView) view.findViewById(R.id.ribbon_title);
 
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+                ExpandableListAdapter eListAdapter = (ExpandableListAdapter) parent.getExpandableListAdapter();
+                Class aClass = (Class) eListAdapter.getChild(groupPosition, childPosition);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("class", aClass);
+                bundle.putString("start_time", start_time);
+                bundle.putString("date", date);
+                Intent i = new Intent(getActivity(), FutureClassActivity.class);
+                i.putExtras(bundle);
+                startActivity(i);
+
+                return true;
+            }
+        });
+
         metrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
         width = metrics.widthPixels;
@@ -101,6 +123,7 @@ public class SearchTimeFragment extends Fragment {
         searchFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mProgressDialog.show();
                 /* Create handle for the RetrofitInstance interface */
                 DataService service = RetrofitClient.getRetrofitInstance().create(DataService.class);
                 Call<ClassResult> call = service.getClassesByParam(date, start_time, end_time);
@@ -236,6 +259,8 @@ public class SearchTimeFragment extends Fragment {
     }
 
     private void generateDataList(ClassResult classes) {
+        listDataChild.clear();
+        listDataHeader.clear();
         if (classes.getClasses().size() > 0) {
             List<Class> dataSet = classes.getClasses();
             for (Class c : dataSet) {
@@ -257,8 +282,6 @@ public class SearchTimeFragment extends Fragment {
         }
         else {
             ribbonTitle.setText(R.string.no_rooms);
-            listDataChild.clear();
-            listDataHeader.clear();
             listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
             expListView.setAdapter(listAdapter);
         }
