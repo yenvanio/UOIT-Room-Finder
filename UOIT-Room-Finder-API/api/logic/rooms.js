@@ -15,14 +15,16 @@ var db = require('../../config/db');
   */
   getRoomSchedule = function (data, callback) {
     var sql = `
-    SELECT * FROM class
-            WHERE class.room = '${data.room}'
+    SELECT DISTINCT day, start_time, end_time, start_date, end_date FROM class
+            WHERE class.room = '${data.room}' 
             ORDER BY CASE WHEN day = 'M' THEN '1'
 			                    WHEN day = 'T' THEN '2'
 			                    WHEN day = 'W' THEN '3'
 			                    WHEN day = 'R' THEN '4'
 			                    WHEN day = 'F' THEN '5'
-                          ELSE day END ASC, class.start_time`;   
+                          ELSE day END ASC, class.start_time
+
+`;   
     console.log(sql);
 
     db.query(sql, function(err, res) {

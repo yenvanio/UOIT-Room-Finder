@@ -26,7 +26,7 @@ import android.widget.Toast;
 
 import com.outsourced.shiv.uoitroomfinder.Adapters.ExpandableListAdapter;
 import com.outsourced.shiv.uoitroomfinder.Models.Class;
-import com.outsourced.shiv.uoitroomfinder.Models.ClassResult;
+import com.outsourced.shiv.uoitroomfinder.Models.Class.ClassResult;
 import com.outsourced.shiv.uoitroomfinder.Network.DataService;
 import com.outsourced.shiv.uoitroomfinder.Network.RetrofitClient;
 import com.outsourced.shiv.uoitroomfinder.R;
