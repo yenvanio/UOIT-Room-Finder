@@ -1,6 +1,7 @@
 package com.outsourced.shiv.uoitroomfinder.Fragments;
 
 import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -12,7 +13,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -127,6 +130,7 @@ public class SearchTimeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 /* Create handle for the RetrofitInstance interface */
+                Log.d("Params", end_time);
                 DataService service = RetrofitClient.getRetrofitInstance().create(DataService.class);
                 Call<ClassResult> call = service.getClassesByParam(date, start_time, end_time);
                 call.enqueue(new Callback<ClassResult>() {
@@ -135,6 +139,7 @@ public class SearchTimeFragment extends Fragment {
 
                         Log.d("Search Time: HTTP CODE", Integer.toString(response.code()));
                         generateDataList(response.body());
+                        Log.d("onResponse", response.toString());
                     }
 
                     @Override
@@ -202,17 +207,13 @@ public class SearchTimeFragment extends Fragment {
         edit_start_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar time = Calendar.getInstance();
-                int hour = time.get(Calendar.HOUR_OF_DAY);
-                int minute = time.get(Calendar.MINUTE);
-
                 TimePickerDialog sTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         updateStartTimeLabel(selectedHour, selectedMinute);
                     }
-                }, hour, minute, false);
-                sTimePicker.setTitle("Select Time");
+                }, start_time_cal.get(Calendar.HOUR_OF_DAY), start_time_cal.get(Calendar.MINUTE), false);
+                sTimePicker.setTitle("Select Start Time");
                 sTimePicker.show();
 
             }
@@ -237,23 +238,19 @@ public class SearchTimeFragment extends Fragment {
         edit_end_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar time = Calendar.getInstance();
-                int hour = time.get(Calendar.HOUR_OF_DAY);
-                int minute = time.get(Calendar.MINUTE);
-
                 TimePickerDialog sTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                         updateEndTimeLabel(selectedHour, selectedMinute);
                     }
-                }, hour, minute, false);
-                sTimePicker.setTitle("Select Time");
+                }, end_time_cal.get(Calendar.HOUR_OF_DAY), end_time_cal.get(Calendar.MINUTE), false);
+                sTimePicker.setTitle("Select End Time");
                 sTimePicker.show();
 
             }
         });
         updateStartTimeLabel(start_time_cal.get(Calendar.HOUR_OF_DAY), start_time_cal.get(Calendar.MINUTE));
-        end_time_cal.add(Calendar.HOUR, 1);
+        end_time_cal.add(Calendar.HOUR_OF_DAY, 1);
         updateEndTimeLabel(end_time_cal.get(Calendar.HOUR_OF_DAY), end_time_cal.get(Calendar.MINUTE));
 
         return view;
@@ -289,23 +286,17 @@ public class SearchTimeFragment extends Fragment {
     }
 
     private void checkParams() {
-        // Date
-        if (edit_date.getText().toString().equals("")) {
-            edit_date.setError("Date cannot be empty");
-            canSearch = false;
-        } else {
-            edit_date.setError(null);
-        }
         // Time
         if (end_time_cal.getTimeInMillis() <= start_time_cal.getTimeInMillis()) {
-            edit_end_time.setError("End Time must be after Start Time");
-            canSearch = false;
-        } else if (start_time_cal.getTimeInMillis() >= end_time_cal.getTimeInMillis()) {
-            edit_start_time.setError("Start Time must be before End Time");
+            String errorString = "End Time must be after Start Time";
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+            ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(getResources().getColor(R.color.White));
+            spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+            edit_end_time.requestFocus();
+            edit_end_time.setError(spannableStringBuilder);
             canSearch = false;
         } else {
             canSearch = true;
-            edit_start_time.setError(null);
             edit_end_time.setError(null);
         }
         searchFab.setEnabled(canSearch);
@@ -323,13 +314,12 @@ public class SearchTimeFragment extends Fragment {
     }
 
     private void updateStartTimeLabel(int hour, int minute) {
-        start_time_cal.set(Calendar.HOUR_OF_DAY,hour);
-        start_time_cal.set(Calendar.MINUTE,minute);
+        start_time_cal.set(Calendar.HOUR_OF_DAY, hour);
+        start_time_cal.set(Calendar.MINUTE, minute);
 
-        SimpleDateFormat paramFormat = new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat paramFormat = new SimpleDateFormat("HH:mm:ss");
         SimpleDateFormat displayFormat = new SimpleDateFormat("hh:mm aa");
         start_time = paramFormat.format(start_time_cal.getTime());
-
         edit_start_time.setText(displayFormat.format(start_time_cal.getTime()));
     }
 
@@ -337,7 +327,7 @@ public class SearchTimeFragment extends Fragment {
         end_time_cal.set(Calendar.HOUR_OF_DAY,hour);
         end_time_cal.set(Calendar.MINUTE,minute);
 
-        SimpleDateFormat paramFormat = new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat paramFormat = new SimpleDateFormat("HH:mm:ss");
         SimpleDateFormat displayFormat = new SimpleDateFormat("hh:mm aa");
         end_time = paramFormat.format(end_time_cal.getTime());
 

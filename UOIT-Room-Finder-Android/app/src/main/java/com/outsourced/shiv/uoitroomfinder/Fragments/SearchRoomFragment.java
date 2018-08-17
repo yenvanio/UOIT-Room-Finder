@@ -7,7 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -122,7 +124,11 @@ public class SearchRoomFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.toString().equals("")) {
-                    actv.setError("Room cannot be empty");
+                    String errorString = "This field cannot be empty";  // Your custom error message.
+                    ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(getResources().getColor(R.color.White));
+                    SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+                    spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+                    actv.setError(spannableStringBuilder);
                     canSearch = false;
                 } else {
                     actv.setError(null);

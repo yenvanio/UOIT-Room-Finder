@@ -1,5 +1,7 @@
 package com.outsourced.shiv.uoitroomfinder.Network;
 
+import android.util.Log;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

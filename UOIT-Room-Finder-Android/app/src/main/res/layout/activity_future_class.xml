@@ -44,28 +44,42 @@
 
         </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_above="@id/mapCard"
+            android:layout_below="@id/ribbon_card">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv"
-            android:layout_above="@id/map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ribbon_card"
             android:padding="10dp" />
 
-        <fragment
-            android:id="@+id/map"
-            android:padding="10dp"
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/mapCard"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:clickable="true"
-            android:focusable="true"
+            android:focusable="true">
+
+        <fragment
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             map:uiCompass="true"
             map:zOrderOnTop="true"
             map:uiZoomControls="true"
             android:background="#00000000"
             class="com.google.android.gms.maps.SupportMapFragment"/>
+
+        </android.support.v7.widget.CardView>
 
     </RelativeLayout>
 
