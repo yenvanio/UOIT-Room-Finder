@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.outsourced.shiv.uoitroomfinder.R;
@@ -54,6 +55,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.child_title);
+
+        ImageView lab_warning = (ImageView) convertView.findViewById(R.id.lab_icon);
+        if (child.getIsLab().equals("Laboratory")) {
+            lab_warning.setVisibility(View.VISIBLE);
+        } else {
+            lab_warning.setVisibility(View.INVISIBLE);
+        }
 
         txtListChild.setText(childText);
         return convertView;

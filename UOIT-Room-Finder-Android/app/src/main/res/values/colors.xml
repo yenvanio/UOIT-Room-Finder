@@ -8,6 +8,7 @@
   <color name="White">#FFFFFF</color>
   <color name="Ivory">#FFFFF0</color>
   <color name="LightYellow">#FFFFE0</color>
+  <color name="Warning_Yellow">FFEFEF01</color>
   <color name="Yellow">#FFFF00</color>
   <color name="Snow">#FFFAFA</color>
   <color name="FloralWhite">#FFFAF0</color>

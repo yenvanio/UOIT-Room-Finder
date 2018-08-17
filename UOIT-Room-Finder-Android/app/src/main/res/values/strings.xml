@@ -15,6 +15,8 @@
   <string name="end_time">End Time</string>
   <string name="faq_title">F.A.Q</string>
 
+  <string name="lab_warning">Lab Room. Might</string>
+
   <string name="does_do_title">What does Room Finder do?</string>
   <string name="does_do">Room Finder uses the schedules created at the beginning of the semester to determine when a room is not being used by any classes.</string>
 
