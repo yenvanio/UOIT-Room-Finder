@@ -25,6 +25,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.outsourced.shiv.uoitroomfinder.Activities.FutureClassActivity;
 import com.outsourced.shiv.uoitroomfinder.Adapters.ExpandableListAdapter;
 import com.outsourced.shiv.uoitroomfinder.Models.Class;
@@ -62,7 +65,7 @@ public class SearchTimeFragment extends Fragment {
     boolean canSearch = false;
     FloatingActionButton searchFab;
 
-    ProgressDialog mProgressDialog;
+    private AdView mAdView;
 
     public static SearchTimeFragment newInstance() {
         SearchTimeFragment fragment = new SearchTimeFragment();
@@ -79,7 +82,7 @@ public class SearchTimeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_searchtime, container, false);
 
-        mProgressDialog = new ProgressDialog(getActivity());
+        setUpAds(view);
 
         expListView = (ExpandableListView) view.findViewById(R.id.expLV);
         expListView.setFocusable(false);
@@ -123,21 +126,19 @@ public class SearchTimeFragment extends Fragment {
         searchFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mProgressDialog.show();
                 /* Create handle for the RetrofitInstance interface */
                 DataService service = RetrofitClient.getRetrofitInstance().create(DataService.class);
                 Call<ClassResult> call = service.getClassesByParam(date, start_time, end_time);
                 call.enqueue(new Callback<ClassResult>() {
                     @Override
                     public void onResponse(Call<ClassResult> call, Response<ClassResult> response) {
-                        mProgressDialog.dismiss();
+
                         Log.d("Search Time: HTTP CODE", Integer.toString(response.code()));
                         generateDataList(response.body());
                     }
 
                     @Override
                     public void onFailure(Call<ClassResult> call, Throwable t) {
-                        mProgressDialog.dismiss();
                         Log.d("Error", t.toString());
                         Toast.makeText(getActivity(), "Something went wrong...Please try again!", Toast.LENGTH_SHORT).show();
                     }
@@ -348,5 +349,15 @@ public class SearchTimeFragment extends Fragment {
         final float scale = getResources().getDisplayMetrics().density;
         // Convert the dps to pixels, based on density scale
         return (int) (pixels * scale + 0.5f);
+    }
+
+    public void setUpAds(View view) {
+
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+        MobileAds.initialize(getActivity(), "ca-app-pub-2173238213882820~7350740510");
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }

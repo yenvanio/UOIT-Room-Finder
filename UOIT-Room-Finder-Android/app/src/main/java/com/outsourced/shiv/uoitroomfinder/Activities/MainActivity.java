@@ -10,6 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.outsourced.shiv.uoitroomfinder.Fragments.HelpFragment;
 import com.outsourced.shiv.uoitroomfinder.Fragments.HomeFragment;
 import com.outsourced.shiv.uoitroomfinder.Fragments.SearchFragment;

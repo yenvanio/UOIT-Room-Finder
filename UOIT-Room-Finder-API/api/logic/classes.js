@@ -55,7 +55,8 @@ var db = require('../../config/db');
               WHERE class.day = '${data.day}'
               AND class.room = '${data.room}'
               AND '${data.date}' >= class.start_date AND '${data.date}' <= class.end_date
-              AND '${data.start_time}' <= class.start_time`;
+              AND '${data.start_time}' <= class.start_time
+        ORDER BY class.start_time ASC`;
   
     console.log(sql);
 

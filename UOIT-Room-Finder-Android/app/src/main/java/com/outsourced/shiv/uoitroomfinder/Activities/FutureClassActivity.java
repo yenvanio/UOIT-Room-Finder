@@ -153,7 +153,7 @@ public class FutureClassActivity extends AppCompatActivity {
         if (classes.getClasses().size() > 0) {
             List<Class> dataSet = classes.getClasses();
             SimpleDateFormat displayFormat = new SimpleDateFormat("hh:mm aa");
-            SimpleDateFormat inputFormat = new SimpleDateFormat("hh:mm:ss");
+            SimpleDateFormat inputFormat = new SimpleDateFormat("HH:mm:ss");
             for (Class c : dataSet) {
                 try {
                     String start_time_format = displayFormat.format(inputFormat.parse(c.getStart_time()));

@@ -17,6 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.outsourced.shiv.uoitroomfinder.Adapters.HelpAdapter;
 import com.outsourced.shiv.uoitroomfinder.Models.Help;
 import com.outsourced.shiv.uoitroomfinder.R;
@@ -35,6 +38,8 @@ public class HelpFragment extends Fragment {
     private RecyclerView recyclerView;
     private HelpAdapter mAdapter;
 
+    private AdView mAdView;
+
     public static HelpFragment newInstance() {
         HelpFragment fragment = new HelpFragment();
         return fragment;
@@ -49,6 +54,8 @@ public class HelpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_help, container, false);
+
+        setUpAds(view);
 
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.faq_title);
@@ -157,5 +164,15 @@ public class HelpFragment extends Fragment {
                 fam.close(true);
             }
         };
+    }
+
+    public void setUpAds(View view) {
+
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+        MobileAds.initialize(getActivity(), "ca-app-pub-2173238213882820~7350740510");
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }

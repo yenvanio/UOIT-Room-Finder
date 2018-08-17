@@ -23,15 +23,24 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_below="@id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-2173238213882820/2505607948" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
+        android:layout_below="@id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:padding="10dp"
         android:scrollbars="none"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:layout_marginTop="?attr/actionBarSize" />
+        android:layout_marginBottom="?attr/actionBarSize" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/fab_menu"

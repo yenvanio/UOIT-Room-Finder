@@ -11,6 +11,7 @@ import java.util.Locale;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,8 +52,10 @@ public class ExpandableScheduleAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         final RoomSchedule child = (RoomSchedule) getChild(groupPosition, childPosition);
+
         final String start_time_text = child.getStart_time();
         final String end_time_text = child.getEnd_time();
+
         final Date start_date_text = child.getStart_date();
         final Date end_date_text = child.getEnd_date();
 
@@ -75,19 +78,17 @@ public class ExpandableScheduleAdapter extends BaseExpandableListAdapter {
         String type_text = "";
         String start_date_format = "";
 
-        if (start_date_text == end_date_text) { // Only on certain days
-            String paramFormat = "YYYY-MM-dd";
+        if (start_date_text.equals(end_date_text)) { // Only on certain days
             String date_displayFormat = "MMMM dd yyyy";
 
-            SimpleDateFormat sdf = new SimpleDateFormat(paramFormat, Locale.CANADA);
-            start_date_format = sdf.format(start_date_text);
-
-            sdf = new SimpleDateFormat(date_displayFormat, Locale.CANADA);
+            SimpleDateFormat sdf = new SimpleDateFormat(date_displayFormat, Locale.CANADA);
             start_date_format = sdf.format(start_date_text);
 
             type_text = "Only on " + start_date_format;
+            Log.d("Only on", start_date_text + " - " + end_date_text);
         } else { // Every Week
             type_text = "Every Week";
+            Log.d("Every Week", start_date_text + " - " + end_date_text);
         }
 
         TextView time = (TextView) convertView.findViewById(R.id.time);

@@ -15,6 +15,9 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.outsourced.shiv.uoitroomfinder.Activities.FutureClassActivity;
 import com.outsourced.shiv.uoitroomfinder.Activities.MainActivity;
 import com.outsourced.shiv.uoitroomfinder.Adapters.ExpandableListAdapter;
@@ -41,7 +44,6 @@ public class HomeFragment extends Fragment {
     ExpandableListView expListView;
     List<String> listDataHeader = new ArrayList<>();
     HashMap<String, List<Class>> listDataChild = new HashMap<>();
-    ProgressDialog mProgressDialog;
     TextView ribbonTitle;
     Toolbar toolbar;
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -50,6 +52,8 @@ public class HomeFragment extends Fragment {
 
     DisplayMetrics metrics;
     int width;
+
+    private AdView mAdView;
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -66,6 +70,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        setUpAds(view);
+
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_home);
 
@@ -81,7 +87,6 @@ public class HomeFragment extends Fragment {
                 }
         );
 
-        mProgressDialog = new ProgressDialog(getActivity());
         expListView = (ExpandableListView) view.findViewById(R.id.expLV);
         ribbonTitle = (TextView) view.findViewById(R.id.ribbon_title);
 
@@ -114,14 +119,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void startService() {
-        mProgressDialog.show();
         /* Create handle for the RetrofitInstance interface */
         DataService service = RetrofitClient.getRetrofitInstance().create(DataService.class);
         Call<ClassResult> call = service.getAllClasses();
         call.enqueue(new Callback<ClassResult>() {
             @Override
             public void onResponse(Call<ClassResult> call, Response<ClassResult> response) {
-                mProgressDialog.dismiss();
                 Log.d("Home: HTTP CODE", Integer.toString(response.code()));
                 generateDataList(response.body());
                 mSwipeRefreshLayout.setRefreshing(false);
@@ -129,7 +132,6 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ClassResult> call, Throwable t) {
-                mProgressDialog.dismiss();
                 Log.d("Error", t.toString());
                 mSwipeRefreshLayout.setRefreshing(false);
                 Toast.makeText(getActivity(), "Something went wrong...Please try again!", Toast.LENGTH_SHORT).show();
@@ -181,5 +183,15 @@ public class HomeFragment extends Fragment {
         final float scale = getResources().getDisplayMetrics().density;
         // Convert the dps to pixels, based on density scale
         return (int) (pixels * scale + 0.5f);
+    }
+
+    public void setUpAds(View view) {
+
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+        MobileAds.initialize(getActivity(), "ca-app-pub-2173238213882820~7350740510");
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }
