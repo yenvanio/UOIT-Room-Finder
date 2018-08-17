@@ -17,6 +17,7 @@
     "supertest": "^1.0.0"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "restart": "forever stop 0 && forever start server.js"
   }
 }

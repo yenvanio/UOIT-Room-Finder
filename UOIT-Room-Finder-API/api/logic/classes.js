@@ -18,12 +18,10 @@ var db = require('../../config/db');
       SELECT DISTINCT(class.room), building.name AS building, building.location, course.isLab FROM class 
           LEFT JOIN course ON class.fk_course_crn = course.crn
           LEFT JOIN building ON class.fk_building_id = building.id
-              WHERE class.day = '${data.day}'
-              AND class.start_date <= '${data.date}' AND class.end_date >= '${data.date}'
+              WHERE class.start_date <= '${data.date}' AND class.end_date >= '${data.date}'
               AND room NOT IN
                   (SELECT room FROM class 
                       WHERE class.start_date <= '${data.date}' AND class.end_date >= '${data.date}'
-                      AND class.day = '${data.day}'
                       AND 
                         (class.start_time >= '${data.start_time}' AND class.start_time <= '${data.end_time}')
                       OR
