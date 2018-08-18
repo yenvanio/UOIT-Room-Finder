@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -57,10 +58,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.child_title);
 
         ImageView lab_warning = (ImageView) convertView.findViewById(R.id.lab_icon);
+        TextView lab_warning_text = (TextView) convertView.findViewById(R.id.lab_warning);
         if (child.getIsLab().equals("Laboratory")) {
             lab_warning.setVisibility(View.VISIBLE);
+            lab_warning_text.setVisibility(View.VISIBLE);
         } else {
             lab_warning.setVisibility(View.INVISIBLE);
+            lab_warning_text.setVisibility(View.GONE);
         }
 
         txtListChild.setText(childText);
@@ -97,6 +101,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.parent_row, null);
         }
+
+        if (isExpanded)
+            convertView.setPadding(0, 0, 0, 0);
+        else
+            convertView.setPadding(0, 0, 0, 100);
+
+
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.parent_title);
 

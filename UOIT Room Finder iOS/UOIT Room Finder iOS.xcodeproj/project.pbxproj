@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5814A6552127A83E00EA638F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814A6542127A83E00EA638F /* AppDelegate.swift */; };
+		5814A6572127A83E00EA638F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814A6562127A83E00EA638F /* ViewController.swift */; };
+		5814A65A2127A83E00EA638F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5814A6582127A83E00EA638F /* Main.storyboard */; };
+		5814A65C2127A83F00EA638F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5814A65B2127A83F00EA638F /* Assets.xcassets */; };
+		5814A65F2127A83F00EA638F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5814A65D2127A83F00EA638F /* LaunchScreen.storyboard */; };
+		5814A66A2127A83F00EA638F /* UOIT_Room_Finder_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814A6692127A83F00EA638F /* UOIT_Room_Finder_iOSTests.swift */; };
+		5814A6752127A83F00EA638F /* UOIT_Room_Finder_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814A6742127A83F00EA638F /* UOIT_Room_Finder_iOSUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5814A6662127A83F00EA638F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5814A6492127A83E00EA638F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5814A6502127A83E00EA638F;
+			remoteInfo = "UOIT Room Finder iOS";
+		};
+		5814A6712127A83F00EA638F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5814A6492127A83E00EA638F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5814A6502127A83E00EA638F;
+			remoteInfo = "UOIT Room Finder iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5814A6512127A83E00EA638F /* UOIT Room Finder iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UOIT Room Finder iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5814A6542127A83E00EA638F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5814A6562127A83E00EA638F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5814A6592127A83E00EA638F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5814A65B2127A83F00EA638F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5814A65E2127A83F00EA638F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5814A6602127A83F00EA638F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5814A6652127A83F00EA638F /* UOIT Room Finder iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UOIT Room Finder iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5814A6692127A83F00EA638F /* UOIT_Room_Finder_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOIT_Room_Finder_iOSTests.swift; sourceTree = "<group>"; };
+		5814A66B2127A83F00EA638F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5814A6702127A83F00EA638F /* UOIT Room Finder iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UOIT Room Finder iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5814A6742127A83F00EA638F /* UOIT_Room_Finder_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UOIT_Room_Finder_iOSUITests.swift; sourceTree = "<group>"; };
+		5814A6762127A83F00EA638F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5814A64E2127A83E00EA638F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5814A6622127A83F00EA638F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5814A66D2127A83F00EA638F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5814A6482127A83E00EA638F = {
+			isa = PBXGroup;
+			children = (
+				5814A6532127A83E00EA638F /* UOIT Room Finder iOS */,
+				5814A6682127A83F00EA638F /* UOIT Room Finder iOSTests */,
+				5814A6732127A83F00EA638F /* UOIT Room Finder iOSUITests */,
+				5814A6522127A83E00EA638F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5814A6522127A83E00EA638F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5814A6512127A83E00EA638F /* UOIT Room Finder iOS.app */,
+				5814A6652127A83F00EA638F /* UOIT Room Finder iOSTests.xctest */,
+				5814A6702127A83F00EA638F /* UOIT Room Finder iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5814A6532127A83E00EA638F /* UOIT Room Finder iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5814A6542127A83E00EA638F /* AppDelegate.swift */,
+				5814A6562127A83E00EA638F /* ViewController.swift */,
+				5814A6582127A83E00EA638F /* Main.storyboard */,
+				5814A65B2127A83F00EA638F /* Assets.xcassets */,
+				5814A65D2127A83F00EA638F /* LaunchScreen.storyboard */,
+				5814A6602127A83F00EA638F /* Info.plist */,
+			);
+			path = "UOIT Room Finder iOS";
+			sourceTree = "<group>";
+		};
+		5814A6682127A83F00EA638F /* UOIT Room Finder iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				5814A6692127A83F00EA638F /* UOIT_Room_Finder_iOSTests.swift */,
+				5814A66B2127A83F00EA638F /* Info.plist */,
+			);
+			path = "UOIT Room Finder iOSTests";
+			sourceTree = "<group>";
+		};
+		5814A6732127A83F00EA638F /* UOIT Room Finder iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5814A6742127A83F00EA638F /* UOIT_Room_Finder_iOSUITests.swift */,
+				5814A6762127A83F00EA638F /* Info.plist */,
+			);
+			path = "UOIT Room Finder iOSUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5814A6502127A83E00EA638F /* UOIT Room Finder iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5814A6792127A83F00EA638F /* Build configuration list for PBXNativeTarget "UOIT Room Finder iOS" */;
+			buildPhases = (
+				5814A64D2127A83E00EA638F /* Sources */,
+				5814A64E2127A83E00EA638F /* Frameworks */,
+				5814A64F2127A83E00EA638F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UOIT Room Finder iOS";
+			productName = "UOIT Room Finder iOS";
+			productReference = 5814A6512127A83E00EA638F /* UOIT Room Finder iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5814A6642127A83F00EA638F /* UOIT Room Finder iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5814A67C2127A83F00EA638F /* Build configuration list for PBXNativeTarget "UOIT Room Finder iOSTests" */;
+			buildPhases = (
+				5814A6612127A83F00EA638F /* Sources */,
+				5814A6622127A83F00EA638F /* Frameworks */,
+				5814A6632127A83F00EA638F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5814A6672127A83F00EA638F /* PBXTargetDependency */,
+			);
+			name = "UOIT Room Finder iOSTests";
+			productName = "UOIT Room Finder iOSTests";
+			productReference = 5814A6652127A83F00EA638F /* UOIT Room Finder iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5814A66F2127A83F00EA638F /* UOIT Room Finder iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5814A67F2127A83F00EA638F /* Build configuration list for PBXNativeTarget "UOIT Room Finder iOSUITests" */;
+			buildPhases = (
+				5814A66C2127A83F00EA638F /* Sources */,
+				5814A66D2127A83F00EA638F /* Frameworks */,
+				5814A66E2127A83F00EA638F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5814A6722127A83F00EA638F /* PBXTargetDependency */,
+			);
+			name = "UOIT Room Finder iOSUITests";
+			productName = "UOIT Room Finder iOSUITests";
+			productReference = 5814A6702127A83F00EA638F /* UOIT Room Finder iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5814A6492127A83E00EA638F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Shivanouyen Yoganathan";
+				TargetAttributes = {
+					5814A6502127A83E00EA638F = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					5814A6642127A83F00EA638F = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 5814A6502127A83E00EA638F;
+					};
+					5814A66F2127A83F00EA638F = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 5814A6502127A83E00EA638F;
+					};
+				};
+			};
+			buildConfigurationList = 5814A64C2127A83E00EA638F /* Build configuration list for PBXProject "UOIT Room Finder iOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5814A6482127A83E00EA638F;
+			productRefGroup = 5814A6522127A83E00EA638F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5814A6502127A83E00EA638F /* UOIT Room Finder iOS */,
+				5814A6642127A83F00EA638F /* UOIT Room Finder iOSTests */,
+				5814A66F2127A83F00EA638F /* UOIT Room Finder iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5814A64F2127A83E00EA638F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5814A65F2127A83F00EA638F /* LaunchScreen.storyboard in Resources */,
+				5814A65C2127A83F00EA638F /* Assets.xcassets in Resources */,
+				5814A65A2127A83E00EA638F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5814A6632127A83F00EA638F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5814A66E2127A83F00EA638F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5814A64D2127A83E00EA638F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5814A6572127A83E00EA638F /* ViewController.swift in Sources */,
+				5814A6552127A83E00EA638F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5814A6612127A83F00EA638F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5814A66A2127A83F00EA638F /* UOIT_Room_Finder_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5814A66C2127A83F00EA638F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5814A6752127A83F00EA638F /* UOIT_Room_Finder_iOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5814A6672127A83F00EA638F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5814A6502127A83E00EA638F /* UOIT Room Finder iOS */;
+			targetProxy = 5814A6662127A83F00EA638F /* PBXContainerItemProxy */;
+		};
+		5814A6722127A83F00EA638F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5814A6502127A83E00EA638F /* UOIT Room Finder iOS */;
+			targetProxy = 5814A6712127A83F00EA638F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5814A6582127A83E00EA638F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5814A6592127A83E00EA638F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5814A65D2127A83F00EA638F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5814A65E2127A83F00EA638F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5814A6772127A83F00EA638F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5814A6782127A83F00EA638F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5814A67A2127A83F00EA638F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "UOIT Room Finder iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Outsourced.UOIT-Room-Finder-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5814A67B2127A83F00EA638F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "UOIT Room Finder iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Outsourced.UOIT-Room-Finder-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5814A67D2127A83F00EA638F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "UOIT Room Finder iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Outsourced.UOIT-Room-Finder-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UOIT Room Finder iOS.app/UOIT Room Finder iOS";
+			};
+			name = Debug;
+		};
+		5814A67E2127A83F00EA638F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "UOIT Room Finder iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Outsourced.UOIT-Room-Finder-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UOIT Room Finder iOS.app/UOIT Room Finder iOS";
+			};
+			name = Release;
+		};
+		5814A6802127A83F00EA638F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "UOIT Room Finder iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Outsourced.UOIT-Room-Finder-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "UOIT Room Finder iOS";
+			};
+			name = Debug;
+		};
+		5814A6812127A83F00EA638F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "UOIT Room Finder iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Outsourced.UOIT-Room-Finder-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "UOIT Room Finder iOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5814A64C2127A83E00EA638F /* Build configuration list for PBXProject "UOIT Room Finder iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5814A6772127A83F00EA638F /* Debug */,
+				5814A6782127A83F00EA638F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5814A6792127A83F00EA638F /* Build configuration list for PBXNativeTarget "UOIT Room Finder iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5814A67A2127A83F00EA638F /* Debug */,
+				5814A67B2127A83F00EA638F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5814A67C2127A83F00EA638F /* Build configuration list for PBXNativeTarget "UOIT Room Finder iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5814A67D2127A83F00EA638F /* Debug */,
+				5814A67E2127A83F00EA638F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5814A67F2127A83F00EA638F /* Build configuration list for PBXNativeTarget "UOIT Room Finder iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5814A6802127A83F00EA638F /* Debug */,
+				5814A6812127A83F00EA638F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5814A6492127A83E00EA638F /* Project object */;
+}

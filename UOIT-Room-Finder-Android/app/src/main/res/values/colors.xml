@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!-- App Theme -->
   <color name="colorPrimary">#0077ca</color>
   <color name="colorPrimaryDark">#1870af</color>
   <color name="colorPrimaryLight">#7cafd2</color>
   <color name="colorAccent">#0096ff</color>
 
+  <!-- Custom Colors-->
+  <color name="WarningYellow">#FFEFEF01</color>
+  <color name="TransparentBlack">#a0000000</color>
+  <color name="Transparent">#00ffffff</color>
+
+  <!-- Color List -->
   <color name="White">#FFFFFF</color>
   <color name="Ivory">#FFFFF0</color>
   <color name="LightYellow">#FFFFE0</color>
-  <color name="Warning_Yellow">FFEFEF01</color>
   <color name="Yellow">#FFFF00</color>
   <color name="Snow">#FFFAFA</color>
   <color name="FloralWhite">#FFFAF0</color>

@@ -36,11 +36,10 @@
         android:id="@+id/rv"
         android:layout_below="@id/adView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
         android:padding="10dp"
-        android:scrollbars="none"
-        android:layout_marginBottom="?attr/actionBarSize" />
+        android:scrollbars="none" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/fab_menu"
@@ -49,7 +48,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_gravity="right|bottom"
-        android:paddingBottom="70dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
 
