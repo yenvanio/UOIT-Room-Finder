@@ -42,7 +42,7 @@ This is a Node API using a SQL Database, which is used for all three platforms o
     - Sample Request
       - `http://uoit.yshiv.com:3000/api/room/all`
     - Sample Response
-      - `{"rooms":[{"room":"DTA212","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA214","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA216","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA217","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA218","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA219","building":"61 Charles Street Building","location":"43.897385, -78.857999"}.....
+      - `{"rooms":[{"room":"DTA212","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA214","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA216","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA217","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA218","building":"61 Charles Street Building","location":"43.897385, -78.857999"},{"room":"DTA219","building":"61 Charles Street Building","location":"43.897385, -78.857999"}.....`
   
   - `@GET /room/schedule`
     - Parameters 
