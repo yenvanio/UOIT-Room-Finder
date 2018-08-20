@@ -8,7 +8,7 @@ UOITRoomFinderApp is the Web Platform for UOIT Room Finder.
 ## Pages
 
 ### Home
-![HOME](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/UOIT-Room-Finder-App/src/assets/images/faq.png)
+![HOME](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/UOIT-Room-Finder-App/src/assets/images/home.png)
   - Displays live results of open rooms for the current hour
   - Clicking on an open room will display any upcoming classes for the day
   
