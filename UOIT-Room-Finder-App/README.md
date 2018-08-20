@@ -8,19 +8,19 @@ UOITRoomFinderApp is the Web Platform for UOIT Room Finder.
 ## Pages
 
 ### Home
-![HOME](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/UOIT-Room-Finder-App/src/assets/images/home.png)
+![HOME](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/assets/images/home.png)
   - Displays live results of open rooms for the current hour
   - Clicking on an open room will display any upcoming classes for the day
   
   
 ### Search By Time
-![TIME](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/UOIT-Room-Finder-App/src/assets/images/time.png) 
+![TIME](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/assets/images/time.png) 
   - Displays results based on search parameters
   - Clicking on an open room will display any upcoming classes for the day
   
   
 ### Search By Room
-![ROOM](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/UOIT-Room-Finder-App/src/assets/images/room.png)
+![ROOM](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/assets/images/room.png)
   - Enter a room number starting with the name of the building 
     - Examples: UA1350, UB2050, SIRC3030 ...etc
   - Displays a schedule of classes that occur in the specified room
@@ -28,5 +28,5 @@ UOITRoomFinderApp is the Web Platform for UOIT Room Finder.
     
     
 ### F.A.Q
-![FAQ](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/UOIT-Room-Finder-App/src/assets/images/faq.png)
+![FAQ](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/assets/images/faq.png)
   - Brief description of what the application does and does not do
