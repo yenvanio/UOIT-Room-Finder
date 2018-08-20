@@ -19,7 +19,7 @@ UOITRoomFinderApp is the Web Platform for UOIT Room Finder.
   - Clicking on an open room will open the [Future Classes](#future-class) page.
 
 ### Future Class
-![TIME](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/assets/web/future.png) 
+![FUTURE](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/assets/web/future.png) 
   - Displays a list of upcoming classes for the day
   - Also indicates the location of the building on the map
   
@@ -35,3 +35,4 @@ UOITRoomFinderApp is the Web Platform for UOIT Room Finder.
 ### F.A.Q
 ![FAQ](https://github.com/yenvanio/UOIT-Room-Finder/blob/master/assets/web/faq.png)
   - Brief description of what the application does and does not do
+  - List of options to contact the developer
