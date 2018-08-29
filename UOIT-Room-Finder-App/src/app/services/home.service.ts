@@ -9,16 +9,8 @@ import { Room } from '../models/room';
 export class HomeService {
 
   /**
-   * Used to add the application language.
-   * @type {HttpHeaders}
-   * @private
-   */
-  // private _headers = new HttpHeaders().set('Access-Control-Allow-Headers', 'Content-Type');
-
-  /**
    * Constructor
    * @param {HttpClient} _http
-   * @param _translateService
    */
   constructor(private _http: HttpClient) { }
 
