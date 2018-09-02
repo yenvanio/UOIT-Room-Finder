@@ -14,9 +14,9 @@ This is a Node API using a SQL Database, which is used for all three platforms o
     - This request also accepts an empty query and will return the open rooms at the time of request.
 
     - Sample Request
-```
-http://uoit.yshiv.com:3000/api/class/all?date=2018-09-10&start_time=00:08:00&end_time=14:00:00
-```
+    ```
+    http://uoit.yshiv.com:3000/api/class/all?date=2018-09-10&start_time=00:08:00&end_time=14:00:00
+    ```
     - Sample Response
 
     ```
