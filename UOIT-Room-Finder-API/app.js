@@ -17,8 +17,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-var landingController = require('./api/controllers/home');
-app.use('/api', landingController);
+app.get('/api', function(req, res) {
+    res.sendFile('./index.html', {root: __dirname })
+});
 
 var classController = require('./api/controllers/classes');
 app.use('/api/class', classController);
