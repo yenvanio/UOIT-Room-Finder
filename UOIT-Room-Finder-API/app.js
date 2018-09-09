@@ -17,6 +17,9 @@ app.use(function (req, res, next) {
     next();
 });
 
+var landingController = require('./api/controllers/home');
+app.use('/api', landingController);
+
 var classController = require('./api/controllers/classes');
 app.use('/api/class', classController);
 
