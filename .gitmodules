@@ -4,3 +4,6 @@
 [submodule "UOIT-RF-Web"]
 	path = UOIT-RF-Web
 	url = https://github.com/yenvanio/UOIT-RF-Web
+[submodule "UOIT-RF-iOS"]
+	path = UOIT-RF-iOS
+	url = https://github.com/yenvanio/UOIT-RF-iOS
