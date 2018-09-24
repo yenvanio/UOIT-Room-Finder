@@ -123,7 +123,7 @@ public class Class implements Serializable {
         return locations;
     }
 
-    public void setLocations(List<Location> locations) {
+        public void setLocations(List<Location> locations) {
         this.locations = locations;
     }
 
