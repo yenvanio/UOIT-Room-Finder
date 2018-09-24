@@ -1,0 +1,3 @@
+[submodule "UOIT-RF-API"]
+	path = UOIT-RF-API
+	url = https://github.com/yenvanio/UOIT-RF-API
