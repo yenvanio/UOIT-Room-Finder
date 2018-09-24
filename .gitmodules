@@ -1,12 +1,12 @@
 [submodule "UOIT-RF-Android"]
 	path = UOIT-RF-Android
 	url = https://github.com/yenvanio/UOIT-RF-Android
-[submodule "UOIT-RF-API"]
-	path = UOIT-RF-API
-	url = https://github.com/yenvanio/UOIT-RF-API
 [submodule "UOIT-RF-Web"]
 	path = UOIT-RF-Web
 	url = https://github.com/yenvanio/UOIT-RF-Web
 [submodule "UOIT-RF-iOS"]
 	path = UOIT-RF-iOS
 	url = https://github.com/yenvanio/UOIT-RF-iOS
+[submodule "UOIT-RF-API"]
+	path = UOIT-RF-API
+	url = https://github.com/yenvanio/UOIT-RF-API
