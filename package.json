@@ -2,7 +2,7 @@
     "name": "uoit-room-finder",
     "version": "0.0.0",
     "scripts": {
-      "update": "git pull --recurse-submodules"
+      "update": "git submodule update --recursive --remote"
     }
   }
   
